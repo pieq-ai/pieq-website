@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
           </div>
           
           {/* Contact */}
-          <div>
+         {/* <div>
             <h4 className="text-lg font-semibold mb-6">Contact Us</h4>
             <ul className="space-y-3">
               <li className="text-neutral-200">123 Main Street, Suite 400</li>
@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
               <li><a href="tel:5551234567" className="text-neutral-200 hover:text-primary-500 transition-colors duration-300">(555) 123-4567</a></li>
               <li><a href="mailto:info@pieq.com" className="text-neutral-200 hover:text-primary-500 transition-colors duration-300">info@pieq.com</a></li>
             </ul>
-          </div>
+          </div>*/}
         </div>
         
         <div className="border-t border-neutral-400 pt-8">
