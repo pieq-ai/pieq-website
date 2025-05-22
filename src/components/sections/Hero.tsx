@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="primary" size="lg">
+              <Button variant="primary" size="lg" onClick={() => window.location='mailto:demo@pieq.ai'}>
                 Get a Demo
               </Button>
               

@@ -62,7 +62,7 @@ const Header: React.FC = () => {
 
         {/* CTA Button (desktop) */}
         <div className="hidden lg:block">
-          <Button variant="primary" size="md">
+          <Button variant="primary" size="md" onClick={() => window.location='mailto:demo@pieq.ai'}>
             Get a Demo
           </Button>
         </div>

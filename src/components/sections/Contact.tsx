@@ -65,8 +65,8 @@ const Contact: React.FC = () => {
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-neutral-500 mb-1">Call Us</h3>
-                    <p className="text-neutral-400">(555) 123-4567</p>
+                    <h3 className="text-lg font-medium text-neutral-500 mb-1">Contact Us</h3>
+                    <p className="text-neutral-400"><a href="mailto:support@pieq.ai" className="text-neutral-400 hover:text-primary-500 transition-colors duration-300">support@pieq.ai</a></p>
                   </div>
                 </div>
                 
@@ -76,7 +76,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium text-neutral-500 mb-1">Email Us</h3>
-                    <p className="text-neutral-400">demo@pieq.com</p>
+                    <p className="text-neutral-400"><a href="mailto:demo@pieq.ai" className="text-neutral-400 hover:text-primary-500 transition-colors duration-300">demo@pieq.ai</a></p>
                   </div>
                 </div>
                 
