@@ -1,13 +1,7 @@
-import { 
-  Twitter, 
-  Linkedin, 
+import {
   Mail,
-  ArrowRight,
-  Youtube,
   HelpCircle
 } from 'lucide-react';
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
 
 
 export default function Footer() {
