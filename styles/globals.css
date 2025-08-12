@@ -1,0 +1,476 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@custom-variant dark (&:is(.dark *));
+
+/* Fix dropdown positioning */
+[data-radix-popper-content-wrapper] {
+  z-index: 9999 !important;
+}
+
+/* Select trigger specific styling */
+[data-radix-select-trigger] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+}
+
+/* Hover effect for dropdown to feel like a button */
+[data-radix-select-trigger]:hover {
+  background-color: #f3f4f6 !important; /* Slightly darker on hover */
+  transform: translateY(-1px) !important; /* Subtle lift effect */
+  transition: all 0.2s ease !important;
+}
+
+/* Textarea specific styling */
+[data-slot="textarea"] {
+  min-height: 96px !important; /* 4 rows * 24px */
+  resize: vertical !important;
+}
+
+/* Focus state - show focus borders */
+[data-radix-select-trigger]:focus-visible {
+  outline: none !important;
+  border: 1px solid #9ca3af !important; /* Solid gray border like in the image */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; /* Subtle darker gray shadow below */
+  background-color: white !important;
+}
+
+[data-radix-select-trigger]:focus {
+  outline: none !important;
+  border-color: #ea580c !important; /* Orange border like inputs */
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1) !important; /* Orange shadow */
+  background-color: white !important;
+}
+
+/* Select placeholder styling */
+[data-radix-select-trigger] [data-radix-select-value] {
+  color: #6b7280 !important; /* Medium gray placeholder like image */
+}
+
+[data-radix-select-trigger] [data-radix-select-value][data-placeholder] {
+  color: #6b7280 !important; /* Medium gray placeholder */
+}
+
+[data-radix-select-content] {
+  z-index: 9999 !important;
+  background: white !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  position: relative !important;
+  margin-top: 4px !important;
+  backdrop-filter: none !important;
+  opacity: 1 !important;
+  padding: 4px !important;
+  min-width: 200px !important;
+}
+
+/* Force solid white background for dropdown items */
+[data-radix-select-item] {
+  background: white !important;
+  padding: 8px 12px !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+  color: #374151 !important; /* Dark gray text */
+  transition: all 0.2s ease !important;
+  border-radius: 0.25rem !important;
+  margin: 2px 4px !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+[data-radix-select-item]:hover {
+  background-color: #fef7f0 !important; /* Light beige hover like image */
+}
+
+[data-radix-select-item][data-highlighted] {
+  background-color: #fef7f0 !important; /* Light beige highlight like image */
+}
+
+/* First item highlight like in the image */
+[data-radix-select-item]:first-child {
+  background-color: #fef7f0 !important; /* Light beige background for first item */
+}
+
+/* Dropdown content styling */
+[data-radix-select-content] {
+  background: white !important;
+  border: none !important; /* Remove border */
+  border-radius: 0.5rem !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  padding: 6px !important;
+  min-width: 220px !important;
+  margin-top: 4px !important;
+}
+
+/* Dropdown viewport */
+[data-radix-select-viewport] {
+  background: white !important;
+  border-radius: 0.375rem !important;
+}
+
+/* Ensure dropdown items have proper spacing and styling */
+[data-radix-select-item] {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  font-weight: 400 !important;
+}
+
+/* Hover effect for dropdown items */
+[data-radix-select-item]:hover {
+  background-color: #fef7f0 !important;
+  transform: translateX(2px) !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Ensure no transparency in dropdown */
+[data-radix-select-viewport] {
+  background: white !important;
+  opacity: 1 !important;
+}
+
+/* Input styling to match Figma image - ALL form fields */
+[data-slot="input"],
+[data-slot="textarea"],
+[data-radix-select-trigger] {
+  background-color: #fef7f0 !important; /* Light beige background */
+  border: none !important; /* Remove all borders */
+  border-radius: 0.375rem !important;
+  transition: all 0.2s ease !important;
+  color: #374151 !important; /* Dark gray text */
+  padding: 8px 12px !important;
+  min-height: 36px !important;
+  width: 100% !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  cursor: pointer !important; /* Show pointer cursor for dropdown */
+}
+
+/* Placeholder styling to match image - ALL form fields */
+[data-slot="input"]::placeholder,
+[data-slot="textarea"]::placeholder {
+  color: #6b7280 !important; /* Medium gray placeholder */
+  opacity: 1 !important;
+}
+
+/* Select placeholder styling */
+[data-radix-select-trigger] [data-radix-select-value] {
+  color: #6b7280 !important; /* Medium gray placeholder */
+}
+
+[data-radix-select-trigger] [data-radix-select-value][data-placeholder] {
+  color: #6b7280 !important; /* Medium gray placeholder */
+}
+
+/* Select trigger text color when value is selected */
+[data-radix-select-trigger] [data-radix-select-value]:not([data-placeholder]) {
+  color: #374151 !important; /* Dark gray text when value selected */
+}
+
+/* Input focus states - show focus borders */
+[data-slot="input"]:focus,
+[data-slot="textarea"]:focus {
+  outline: none !important;
+  border: 1px solid #9ca3af !important; /* Solid gray border like in the image */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; /* Subtle darker gray shadow below */
+  background-color: white !important;
+}
+
+/* Select trigger focus state - no borders */
+[data-radix-select-trigger]:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Dropdown items with proper hover colors */
+[data-radix-select-item] {
+  background: white !important;
+  padding: 8px 12px !important;
+  cursor: pointer !important;
+  color: #374151 !important;
+  transition: background-color 0.2s ease !important;
+}
+
+[data-radix-select-item]:hover {
+  background-color: #fef7f0 !important; /* Light beige hover */
+}
+
+[data-radix-select-item][data-highlighted] {
+  background-color: #fef7f0 !important; /* Light beige highlight */
+}
+
+/* Fix Select trigger alignment */
+[data-radix-select-trigger] {
+  position: relative !important;
+}
+
+/* Ensure Select items are properly positioned */
+[data-radix-select-item] {
+  padding: 8px 12px !important;
+  cursor: pointer !important;
+}
+
+[data-radix-select-item]:hover {
+  background-color: #f3f4f6 !important;
+}
+
+[data-radix-select-item][data-highlighted] {
+  background-color: #e5e7eb !important;
+}
+
+/* Improve Dialog styling */
+[data-radix-dialog-content] {
+  z-index: 9999 !important;
+}
+
+:root {
+  --font-size: 14px;
+  --background: #ffffff;
+  --foreground: #374151;
+  --card: #ffffff;
+  --card-foreground: #374151;
+  --popover: #ffffff;
+  --popover-foreground: #374151;
+  --primary: #ea580c;
+  --primary-foreground: #ffffff;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #374151;
+  --muted: #fef7f0;
+  --muted-foreground: #6b7280;
+  --accent: #fff7ed;
+  --accent-foreground: #374151;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --input-background: #fef7f0;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #3b82f6;
+  
+  /* Blue accent colors */
+  --blue-primary: #3b82f6;
+  --blue-light: #dbeafe;
+  --blue-dark: #1e40af;
+  --blue-accent: #eff6ff;
+  
+  /* Updated chart colors with blue integration */
+  --chart-1: oklch(0.75 0.18 35); /* Orange */
+  --chart-2: oklch(0.7 0.15 240); /* Blue */
+  --chart-3: oklch(0.65 0.12 55); /* Yellow-orange */
+  --chart-4: oklch(0.6 0.2 220); /* Deep blue */
+  --chart-5: oklch(0.72 0.16 40); /* Red-orange */
+  
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #ea580c;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: #f97316;
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  
+  /* Blue accent colors for dark mode */
+  --blue-primary: #60a5fa;
+  --blue-light: #1e3a8a;
+  --blue-dark: #93c5fd;
+  --blue-accent: #1e293b;
+  
+  /* Updated chart colors for dark mode */
+  --chart-1: oklch(0.75 0.18 35);
+  --chart-2: oklch(0.7 0.15 240);
+  --chart-3: oklch(0.65 0.12 55);
+  --chart-4: oklch(0.6 0.2 220);
+  --chart-5: oklch(0.72 0.16 40);
+  
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #f97316;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  
+  /* Blue color utilities */
+  --color-blue-primary: var(--blue-primary);
+  --color-blue-light: var(--blue-light);
+  --color-blue-dark: var(--blue-dark);
+  --color-blue-accent: var(--blue-accent);
+  
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Custom utility classes for blue accents */
+@layer utilities {
+  .bg-blue-primary {
+    background-color: var(--blue-primary);
+  }
+  
+  .bg-blue-light {
+    background-color: var(--blue-light);
+  }
+  
+  .bg-blue-dark {
+    background-color: var(--blue-dark);
+  }
+  
+  .bg-blue-accent {
+    background-color: var(--blue-accent);
+  }
+  
+  .text-blue-primary {
+    color: var(--blue-primary);
+  }
+  
+  .text-blue-dark {
+    color: var(--blue-dark);
+  }
+  
+  .border-blue-primary {
+    border-color: var(--blue-primary);
+  }
+  
+  .border-blue-light {
+    border-color: var(--blue-light);
+  }
+}
