@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import FeaturesSection from "../components/FeaturesSection";
 import SolutionsSection from "../components/SolutionsSection";
-import ProjectsSection from "../components/TestimonialsSection";
+
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
 
@@ -57,7 +57,6 @@ export default function App() {
         <HeroSection />
         <FeaturesSection />
         <SolutionsSection />
-        <ProjectsSection />
         <ContactSection />
       </main>
       <Footer />
@@ -115,8 +114,9 @@ export default function App() {
       </div>
 
       {/* Read Out Modal */}
-      <Dialog open={showReadout} onOpenChange={setShowReadout}>
-        <DialogContent className="max-w-5xl max-h-[85vh] overflow-y-auto bg-white shadow-2xl border-0">
+      {showReadout && (
+        <Dialog open={showReadout} onOpenChange={setShowReadout}>
+          <DialogContent className="max-w-5xl max-h-[85vh] overflow-y-auto bg-white shadow-2xl border-0">
           <DialogHeader className="pb-6 border-b border-gray-200">
             <DialogTitle className="text-3xl bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent flex items-center gap-3 font-bold">
               <motion.div
@@ -250,8 +250,7 @@ export default function App() {
               </p>
               <div className="flex gap-3 justify-center flex-wrap">
                 <Button 
-                  variant="outline" 
-                  className="bg-white text-orange-600 border-white hover:bg-orange-50"
+                  className="!bg-white !text-orange-600 !border-white hover:!text-black hover:!bg-white transition-colors"
                   onClick={() => {
                     setShowReadout(false);
                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -260,11 +259,10 @@ export default function App() {
                   Talk to Us
                 </Button>
                 <Button 
-                  variant="outline" 
-                  className="bg-white text-orange-600 border-white hover:bg-orange-50"
+                  className="!bg-white !text-orange-600 !border-white hover:!text-black hover:!bg-white transition-colors"
                   onClick={() => {
                     setShowReadout(false);
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
                   }}
                 >
                   Explore Platform
@@ -282,7 +280,8 @@ export default function App() {
             </Button>
           </div>
         </DialogContent>
-      </Dialog>
+        </Dialog>
+      )}
     </div>
   );
 }

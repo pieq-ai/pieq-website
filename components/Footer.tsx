@@ -1,6 +1,6 @@
 import {
   Mail,
-  HelpCircle
+  Headphones
 } from 'lucide-react';
 
 
@@ -22,11 +22,11 @@ export default function Footer() {
       { name: 'Hospitality Bookkeeping', action: () => scrollToSection('solutions') }
     ],
     Resources: [
-      { name: 'Documentation', action: () => scrollToSection('contact') },
-      { name: 'Case Studies', action: () => scrollToSection('contact') }
+      { name: 'Documentation', action: () => {} },
+      { name: 'Case Studies', action: () => {} }
     ],
     Support: [
-      { name: 'Support Us', action: () => scrollToSection('contact') }
+      { name: 'Support', action: () => scrollToSection('contact') }
     ]
   };
 
@@ -54,11 +54,21 @@ export default function Footer() {
             <div className="space-y-3 mb-6">
               <div className="flex items-center gap-3 text-sm">
                 <Mail size={16} className="text-orange-500" />
-                <span>sales@pieq.ai</span>
+                <a 
+                  href="mailto:sales@pieq.ai" 
+                  className="hover:text-orange-400 transition-colors duration-200"
+                >
+                  sales@pieq.ai
+                </a>
               </div>
               <div className="flex items-center gap-3 text-sm">
-                <HelpCircle size={16} className="text-orange-500" />
-                <span>support@pieq.ai</span>
+                <Headphones size={16} className="text-orange-500" />
+                <a 
+                  href="mailto:support@pieq.ai" 
+                  className="hover:text-orange-400 transition-colors duration-200"
+                >
+                  support@pieq.ai
+                </a>
               </div>
             </div>
            

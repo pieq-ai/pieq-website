@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
+    console.log(sectionId,'sectionId');
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -28,7 +29,7 @@ export default function HeroSection() {
                   Orchestrate
                 </span>
                 <span className="block text-gray-900 text-[48px] font-bold">Every Slice of Your Business</span>
-                <span className="block bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent font-bold text-[48px]">Enriched by Agentic AI</span>
+                <span className="block text-[#ed2200] font-bold text-[48px]">Enriched by Agentic AI</span>
               </h1>
               
               <p className="text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -56,7 +57,7 @@ export default function HeroSection() {
                 Talk to us
                 <ArrowRight size={20} className="ml-2" />
               </Button>
-              <Button size="lg" variant="outline" className="border-2 border-blue-primary text-blue-primary hover:bg-blue-primary hover:text-white text-lg px-10 py-5" onClick={() => scrollToSection('contact')}>
+              <Button size="lg" className="border-2 border-blue-primary text-blue-primary hover:bg-[var(--blue-primary)] hover:text-white text-lg px-10 py-5 transition-all duration-200" onClick={() => scrollToSection('features')}>
                 Explore Platform
               </Button>
             </div>

@@ -86,23 +86,25 @@ export default function ContactSection() {
     {
       icon: <Mail className="text-orange-600" size={24} />,
       title: "Email Us",
-      details: "sales@pieq.ai"
+      details: "sales@pieq.ai",
+      email: "sales@pieq.ai"
     },
     {
       icon: <Headphones className="text-orange-600" size={24} />,
-      title: "Support Us",
+      title: "Support",
       details: "support@pieq.ai",
+      email: "support@pieq.ai",
       subtitle: "Get technical assistance and support"
     }
   ];
 
   return (
-    <section id="contact" className="py-16 bg-gradient-to-br from-orange-50 to-red-50">
+    <section id="contact" className="py-20 bg-gradient-to-br from-orange-50 to-red-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl mb-6">
             Ready to Transform
-            <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent block">
+            <span className="block text-[#ed2200]">
               Your Business?
             </span>
           </h2>
@@ -137,6 +139,7 @@ export default function ContactSection() {
                         onChange={handleChange}
                         placeholder="Your full name"
                         required
+                        className="shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200"
                       />
                     </div>
                     <div>
@@ -149,6 +152,7 @@ export default function ContactSection() {
                         onChange={handleChange}
                         placeholder="your.email@company.com"
                         required
+                        className="shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200"
                       />
                     </div>
                   </div>
@@ -162,23 +166,38 @@ export default function ContactSection() {
                       onChange={handleChange}
                       placeholder="Your company name"
                       required
+                      className="shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="industry" className="block text-sm mb-2">Industry</label>
                     <Select value={formData.industry} onValueChange={handleSelectChange}>
-                      <SelectTrigger className="border-none hover:border-none !bg-[#fef7f0] hover:!bg-[#fef7f0] focus:!bg-[#fef7f0] transition-colors duration-200">
+                      <SelectTrigger className="w-full border-none !bg-[#fef7f0] shadow-sm transition-all duration-200 rounded-md px-3 py-2 text-sm">
                         <SelectValue placeholder="Select your industry" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#fef7f0] border-none">
-                        <SelectItem value="insurance" className="text-[#374151] hover:bg-[#fef7f0] focus:bg-[#fef7f0] focus:outline-none focus:ring-0 data-[highlighted]:bg-[#fef7f0] data-[highlighted]:border-none">Insurance</SelectItem>
-                        <SelectItem value="hospitality" className="text-[#374151] hover:bg-[#fef7f0] focus:bg-[#fef7f0] focus:outline-none focus:ring-0 data-[highlighted]:bg-[#fef7f0] data-[highlighted]:border-none">Hospitality</SelectItem>
-                        <SelectItem value="healthcare" className="text-[#374151] hover:bg-[#fef7f0] focus:bg-[#fef7f0] focus:outline-none focus:ring-0 data-[highlighted]:bg-[#fef7f0] data-[highlighted]:border-none">Healthcare</SelectItem>
-                        <SelectItem value="finance" className="text-[#374151] hover:bg-[#fef7f0] focus:bg-[#fef7f0] focus:outline-none focus:ring-0 data-[highlighted]:bg-[#fef7f0] data-[highlighted]:border-none">Finance</SelectItem>
-                        <SelectItem value="manufacturing" className="text-[#374151] hover:bg-[#fef7f0] focus:bg-[#fef7f0] focus:outline-none focus:ring-0 data-[highlighted]:bg-[#fef7f0] data-[highlighted]:border-none">Manufacturing</SelectItem>
-                        <SelectItem value="retail" className="text-[#374151] hover:bg-[#fef7f0] focus:bg-[#fef7f0] focus:outline-none focus:ring-0 data-[highlighted]:bg-[#fef7f0] data-[highlighted]:border-none">Retail</SelectItem>
-                        <SelectItem value="other" className="text-[#374151] hover:bg-[#fef7f0] focus:bg-[#fef7f0] focus:outline-none focus:ring-0 data-[highlighted]:bg-[#fef7f0] data-[highlighted]:border-none">Other</SelectItem>
+                      <SelectContent className="bg-white border border-gray-200 shadow-lg rounded-md overflow-hidden">
+                        <SelectItem value="insurance" className="relative flex w-full cursor-default items-center gap-2 rounded-sm py-2 pr-8 pl-3 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-orange-50 focus:bg-orange-50  data-[highlighted]:bg-orange-50">
+                          <span>Insurance</span>
+                        </SelectItem>
+                        <SelectItem value="hospitality" className="relative flex w-full cursor-default items-center gap-2 rounded-sm py-2 pr-8 pl-3 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-orange-50 focus:bg-orange-50 data-[highlighted]:bg-orange-50">
+                          <span>Hospitality</span>
+                        </SelectItem>
+                        <SelectItem value="healthcare" className="relative flex w-full cursor-default items-center gap-2 rounded-sm py-2 pr-8 pl-3 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-orange-50 focus:bg-orange-50  data-[highlighted]:bg-orange-50">
+                          <span>Healthcare</span>
+                        </SelectItem>
+                        <SelectItem value="finance" className="relative flex w-full cursor-default items-center gap-2 rounded-sm py-2 pr-8 pl-3 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-orange-50 focus:bg-orange-50  data-[highlighted]:bg-orange-50">
+                          <span>Finance</span>
+                        </SelectItem>
+                        <SelectItem value="manufacturing" className="relative flex w-full cursor-default items-center gap-2 rounded-sm py-2 pr-8 pl-3 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-orange-50 focus:bg-orange-50 data-[highlighted]:bg-orange-50">
+                          <span>Manufacturing</span>
+                        </SelectItem>
+                        <SelectItem value="retail" className="relative flex w-full cursor-default items-center gap-2 rounded-sm py-2 pr-8 pl-3 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-orange-50 focus:bg-orange-50  data-[highlighted]:bg-orange-50">
+                          <span>Retail</span>
+                        </SelectItem>
+                        <SelectItem value="other" className="relative flex w-full cursor-default items-center gap-2 rounded-sm py-2 pr-8 pl-3 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-orange-50 focus:bg-orange-50  data-[highlighted]:bg-orange-50">
+                          <span>Other</span>
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -193,6 +212,7 @@ export default function ContactSection() {
                       placeholder="What processes would you like to automate? What challenges are you facing?"
                       rows={4}
                       maxLength={FORM_CONFIG.SECURITY.MAX_MESSAGE_LENGTH}
+                      className="shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200"
                     />
 
                   </div>
@@ -230,8 +250,8 @@ export default function ContactSection() {
           {/* Contact Information */}
           <div className="space-y-6">
             <div className="mb-8">
-              <h3 className="text-2xl mb-4">Get in Touch</h3>
-              <p className="text-gray-600">
+              <h3 className="text-2xl mb-4 font-bold text-gray-900">Get in Touch</h3>
+              <p className="text-gray-600 leading-relaxed">
                 Our automation experts are ready to help you transform your business processes. 
                 Choose the option that works best for you.
               </p>
@@ -244,10 +264,17 @@ export default function ContactSection() {
                     <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center flex-shrink-0">
                       {info.icon}
                     </div>
-                    <div>
-                      <h4 className="mb-2">{info.title}</h4>
-                      <p className="text-lg mb-1">{info.details}</p>
-                      <p className="text-sm text-gray-600">{info.subtitle}</p>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="mb-2 font-semibold text-gray-900">{info.title}</h4>
+                      <a 
+                        href={`mailto:${info.email}`}
+                        className="text-lg mb-1 text-orange-600 hover:text-orange-700 transition-colors duration-200 block break-all"
+                      >
+                        {info.details}
+                      </a>
+                      {info.subtitle && (
+                        <p className="text-sm text-gray-600 mt-1 leading-relaxed">{info.subtitle}</p>
+                      )}
                     </div>
                   </div>
                 </CardContent>
