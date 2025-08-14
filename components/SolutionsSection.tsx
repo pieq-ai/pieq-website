@@ -60,7 +60,7 @@ export default function SolutionsSection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl mb-6">
             Industry-Specific
-            <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent block">
+            <span className="block text-[#ed2200]">
               Solutions
             </span>
           </h2>
@@ -109,13 +109,13 @@ export default function SolutionsSection() {
                           <line x1="190" y1="85" x2="220" y2="85" stroke="#ea580c" strokeWidth="1" opacity="0.6" />
                           <line x1="190" y1="95" x2="225" y2="95" stroke="#ea580c" strokeWidth="1" opacity="0.6" />
                           <line x1="190" y1="105" x2="215" y2="105" stroke="#ea580c" strokeWidth="1" opacity="0.6" />
-                          <text x="210" y="125" textAnchor="middle" fontSize="10" fill="#ea580c">POLICY</text>
+                          <text x="210" y="125" textAnchor="middle" fontSize="10" fill="#ea580c" fontFamily="system-ui, -apple-system, sans-serif">POLICY</text>
                           
                           {/* Commission calculation */}
                           <rect x="280" y="80" width="80" height="60" rx="8" fill="url(#insuranceSecondary0)" />
-                          <text x="320" y="100" textAnchor="middle" fontSize="12" fill="#ea580c">Commission</text>
-                          <text x="320" y="115" textAnchor="middle" fontSize="16" fill="#dc2626">$2,450</text>
-                          <text x="320" y="130" textAnchor="middle" fontSize="10" fill="#ea580c">Auto-calculated</text>
+                          <text x="320" y="100" textAnchor="middle" fontSize="12" fill="#ea580c" fontFamily="system-ui, -apple-system, sans-serif">Commission</text>
+                          <text x="320" y="115" textAnchor="middle" fontSize="16" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">$2,450</text>
+                          <text x="320" y="130" textAnchor="middle" fontSize="10" fill="#ea580c" fontFamily="system-ui, -apple-system, sans-serif">Auto-calculated</text>
                           
                           {/* Agent network */}
                           <circle cx="150" cy="220" r="12" fill="#ea580c" />
@@ -129,10 +129,10 @@ export default function SolutionsSection() {
                           <line x1="150" y1="220" x2="300" y2="190" stroke="#ea580c" strokeWidth="2" opacity="0.6" />
                           
                           {/* Agent labels */}
-                          <text x="150" y="240" textAnchor="middle" fontSize="8" fill="#ea580c">HQ</text>
-                          <text x="200" y="195" textAnchor="middle" fontSize="6" fill="#dc2626">Agent 1</text>
-                          <text x="250" y="205" textAnchor="middle" fontSize="6" fill="#dc2626">Agent 2</text>
-                          <text x="300" y="185" textAnchor="middle" fontSize="6" fill="#dc2626">Agent 3</text>
+                          <text x="150" y="250" textAnchor="middle" fontSize="8" fill="#ea580c" fontFamily="system-ui, -apple-system, sans-serif">HQ</text>
+                          <text x="200" y="185" textAnchor="middle" fontSize="6" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">Agent 1</text>
+                          <text x="250" y="195" textAnchor="middle" fontSize="6" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">Agent 2</text>
+                          <text x="300" y="175" textAnchor="middle" fontSize="6" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">Agent 3</text>
                           
                           {/* Data flow arrows */}
                           <path d="M260 70 L270 65 L260 60" stroke="#ea580c" strokeWidth="2" fill="none" />
@@ -158,12 +158,12 @@ export default function SolutionsSection() {
                           <rect x="100" y="120" width="20" height="25" fill="white" opacity="0.8" />
                           <rect x="130" y="120" width="20" height="25" fill="white" opacity="0.8" />
                           <rect x="85" y="155" width="30" height="25" fill="#8b4513" />
-                          <text x="110" y="110" textAnchor="middle" fontSize="10" fill="white">RESTAURANT</text>
+                          <text x="110" y="110" textAnchor="middle" fontSize="10" fill="white" fontFamily="system-ui, -apple-system, sans-serif">RESTAURANT</text>
                           
                           {/* POS Terminal */}
                           <rect x="200" y="80" width="60" height="40" rx="6" fill="white" stroke="#dc2626" strokeWidth="2" />
                           <rect x="210" y="90" width="40" height="20" fill="#dc2626" opacity="0.2" />
-                          <text x="230" y="103" textAnchor="middle" fontSize="8" fill="#dc2626">POS System</text>
+                          <text x="230" y="103" textAnchor="middle" fontSize="8" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">POS System</text>
                           <circle cx="245" cy="105" r="3" fill="#22c55e" />
                           
                           {/* Receipt/Invoice */}
@@ -173,11 +173,11 @@ export default function SolutionsSection() {
                           <line x1="195" y1="160" x2="222" y2="160" stroke="#dc2626" strokeWidth="0.5" opacity="0.6" />
                           <line x1="195" y1="165" x2="218" y2="165" stroke="#dc2626" strokeWidth="0.5" opacity="0.6" />
                           <line x1="195" y1="175" x2="225" y2="175" stroke="#dc2626" strokeWidth="1" />
-                          <text x="210" y="190" textAnchor="middle" fontSize="8" fill="#dc2626">$127.50</text>
+                          <text x="210" y="190" textAnchor="middle" fontSize="8" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">$127.50</text>
                           
                           {/* Financial Dashboard */}
                           <rect x="280" y="60" width="80" height="100" rx="8" fill="url(#hospitalitySecondary1)" />
-                          <text x="320" y="80" textAnchor="middle" fontSize="10" fill="#dc2626">Daily Summary</text>
+                          <text x="320" y="80" textAnchor="middle" fontSize="10" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">Daily Summary</text>
                           
                           {/* Revenue chart bars */}
                           <rect x="290" y="130" width="8" height="20" fill="#dc2626" />
@@ -186,15 +186,15 @@ export default function SolutionsSection() {
                           <rect x="335" y="125" width="8" height="25" fill="#dc2626" />
                           <rect x="350" y="115" width="8" height="35" fill="#dc2626" />
                           
-                          <text x="320" y="95" textAnchor="middle" fontSize="8" fill="#dc2626">Revenue</text>
+                          <text x="320" y="95" textAnchor="middle" fontSize="8" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">Revenue</text>
                           
                           {/* Multi-client indicators */}
                           <circle cx="50" cy="50" r="15" fill="#dc2626" opacity="0.8" />
-                          <text x="50" y="55" textAnchor="middle" fontSize="8" fill="white">C1</text>
+                          <text x="50" y="55" textAnchor="middle" fontSize="8" fill="white" fontFamily="system-ui, -apple-system, sans-serif">C1</text>
                           <circle cx="100" cy="40" r="15" fill="#ea580c" opacity="0.8" />
-                          <text x="100" y="45" textAnchor="middle" fontSize="8" fill="white">C2</text>
+                          <text x="100" y="45" textAnchor="middle" fontSize="8" fill="white" fontFamily="system-ui, -apple-system, sans-serif">C2</text>
                           <circle cx="150" cy="50" r="15" fill="#dc2626" opacity="0.8" />
-                          <text x="150" y="55" textAnchor="middle" fontSize="8" fill="white">C3</text>
+                          <text x="150" y="55" textAnchor="middle" fontSize="8" fill="white" fontFamily="system-ui, -apple-system, sans-serif">C3</text>
                           
                           {/* Data flow connections */}
                           <line x1="230" y1="100" x2="280" y2="80" stroke="#dc2626" strokeWidth="2" strokeDasharray="5,5" opacity="0.7" />
@@ -203,8 +203,8 @@ export default function SolutionsSection() {
                           {/* Automated sync indicator */}
                           <circle cx="250" cy="220" r="20" fill="#22c55e" opacity="0.2" />
                           <circle cx="250" cy="220" r="12" fill="#22c55e" />
-                          <text x="250" y="225" textAnchor="middle" fontSize="8" fill="white">SYNC</text>
-                          <text x="250" y="250" textAnchor="middle" fontSize="8" fill="#22c55e">Auto-Reconciled</text>
+                          <text x="250" y="225" textAnchor="middle" fontSize="8" fill="white" fontFamily="system-ui, -apple-system, sans-serif">SYNC</text>
+                          <text x="250" y="250" textAnchor="middle" fontSize="8" fill="#22c55e" fontFamily="system-ui, -apple-system, sans-serif">Auto-Reconciled</text>
                         </svg>
                       )}
                     </div>
@@ -230,7 +230,7 @@ export default function SolutionsSection() {
                       ))}
                     </div>
                     
-                    <Button className="w-fit bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600">
+                    <Button className="text-white w-fit bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600">
                       Learn More
                       <ArrowRight size={20} className="ml-2" />
                     </Button>
@@ -258,11 +258,6 @@ export default function SolutionsSection() {
                   </div>
                 ))}
               </div>
-              
-              <Button variant="outline" className="!bg-white text-orange-600 border-white hover:!bg-white hover:text-black hover:border-white">
-                Explore White Label Options
-                <ArrowRight size={20} className="ml-2" />
-              </Button>
             </CardContent>
           </Card>
         </div>

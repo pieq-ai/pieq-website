@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ExternalLink, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import FeaturesSection from "../components/FeaturesSection";
 import SolutionsSection from "../components/SolutionsSection";
-import ProjectsSection from "../components/TestimonialsSection";
+
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
 
@@ -14,6 +14,28 @@ import { Button } from "../components/ui/button";
 
 export default function App() {
   const [showReadout, setShowReadout] = useState(false);
+
+  // Google Analytics page view tracking
+  useEffect(() => {
+    // Track page view when component mounts
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('config', 'G-TZ87S43S52', {
+        page_title: document.title,
+        page_location: window.location.href,
+        page_path: window.location.pathname
+      });
+    }
+  }, []);
+
+  // Track custom events
+  const trackEvent = (action: string, category: string, label?: string) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', action, {
+        event_category: category,
+        event_label: label
+      });
+    }
+  };
 
   const companyReadout = {
     tagline: "Orchestrate Every Slice of Your Business with Agentic AI",
@@ -57,7 +79,6 @@ export default function App() {
         <HeroSection />
         <FeaturesSection />
         <SolutionsSection />
-        <ProjectsSection />
         <ContactSection />
       </main>
       <Footer />
@@ -115,8 +136,9 @@ export default function App() {
       </div>
 
       {/* Read Out Modal */}
-      <Dialog open={showReadout} onOpenChange={setShowReadout}>
-        <DialogContent className="max-w-5xl max-h-[85vh] overflow-y-auto bg-white shadow-2xl border-0">
+      {showReadout && (
+        <Dialog open={showReadout} onOpenChange={setShowReadout}>
+          <DialogContent className="max-w-5xl max-h-[85vh] overflow-y-auto bg-white shadow-2xl border-0">
           <DialogHeader className="pb-6 border-b border-gray-200">
             <DialogTitle className="text-3xl bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent flex items-center gap-3 font-bold">
               <motion.div
@@ -250,8 +272,7 @@ export default function App() {
               </p>
               <div className="flex gap-3 justify-center flex-wrap">
                 <Button 
-                  variant="outline" 
-                  className="bg-white text-orange-600 border-white hover:bg-orange-50"
+                  className="!bg-white !text-orange-600 !border-white hover:!text-black hover:!bg-white transition-colors"
                   onClick={() => {
                     setShowReadout(false);
                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -260,11 +281,10 @@ export default function App() {
                   Talk to Us
                 </Button>
                 <Button 
-                  variant="outline" 
-                  className="bg-white text-orange-600 border-white hover:bg-orange-50"
+                  className="!bg-white !text-orange-600 !border-white hover:!text-black hover:!bg-white transition-colors"
                   onClick={() => {
                     setShowReadout(false);
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
                   }}
                 >
                   Explore Platform
@@ -282,7 +302,8 @@ export default function App() {
             </Button>
           </div>
         </DialogContent>
-      </Dialog>
+        </Dialog>
+      )}
     </div>
   );
 }
