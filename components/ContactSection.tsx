@@ -52,6 +52,14 @@ export default function ContactSection() {
       });
 
       if (response.ok) {
+        // Track successful form submission
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'form_submit', {
+            event_category: 'Contact',
+            event_label: 'Contact Form Success'
+          });
+        }
+        
         setIsSubmitted(true);
         setFormData({ name: '', email: '', company: '', industry: '', message: '' });
         setTimeout(() => {
@@ -125,7 +133,7 @@ export default function ContactSection() {
                 <div className="text-center py-12">
                   <CheckCircle className="text-green-600 mx-auto mb-4" size={48} />
                   <h3 className="text-xl mb-2">Welcome to PieQ!</h3>
-                  <p className="text-gray-600">We've sent your details to our team. Our team will get back to you within {FORM_CONFIG.FORM.RESPONSE_TIME}.</p>
+                  <p className="text-gray-600">We've sent your details to our team. Our team will get back to you shortly. </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -267,7 +275,18 @@ export default function ContactSection() {
                     <div className="flex-1 min-w-0">
                       <h4 className="mb-2 font-semibold text-gray-900">{info.title}</h4>
                       <a 
-                        href={`mailto:${info.email}`}
+                        href={`https://mail.google.com/mail/u/0/#compose`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => {
+                          // Track email link clicks
+                          if (typeof window !== 'undefined' && window.gtag) {
+                            window.gtag('event', 'click', {
+                              event_category: 'Contact',
+                              event_label: `Email Click - ${info.email}`
+                            });
+                          }
+                        }}
                         className="text-lg mb-1 text-orange-600 hover:text-orange-700 transition-colors duration-200 block break-all"
                       >
                         {info.details}

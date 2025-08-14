@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ExternalLink, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from "../components/Header";
@@ -14,6 +14,28 @@ import { Button } from "../components/ui/button";
 
 export default function App() {
   const [showReadout, setShowReadout] = useState(false);
+
+  // Google Analytics page view tracking
+  useEffect(() => {
+    // Track page view when component mounts
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('config', 'G-TZ87S43S52', {
+        page_title: document.title,
+        page_location: window.location.href,
+        page_path: window.location.pathname
+      });
+    }
+  }, []);
+
+  // Track custom events
+  const trackEvent = (action: string, category: string, label?: string) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', action, {
+        event_category: category,
+        event_label: label
+      });
+    }
+  };
 
   const companyReadout = {
     tagline: "Orchestrate Every Slice of Your Business with Agentic AI",

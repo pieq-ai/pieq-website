@@ -55,7 +55,18 @@ export default function Footer() {
               <div className="flex items-center gap-3 text-sm">
                 <Mail size={16} className="text-orange-500" />
                 <a 
-                  href="mailto:sales@pieq.ai" 
+                  href="https://mail.google.com/mail/u/0/#compose"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    // Track email link clicks
+                    if (typeof window !== 'undefined' && window.gtag) {
+                      window.gtag('event', 'click', {
+                        event_category: 'Footer',
+                        event_label: 'Email Click - sales@pieq.ai'
+                      });
+                    }
+                  }}
                   className="hover:text-orange-400 transition-colors duration-200"
                 >
                   sales@pieq.ai
@@ -64,7 +75,18 @@ export default function Footer() {
               <div className="flex items-center gap-3 text-sm">
                 <Headphones size={16} className="text-orange-500" />
                 <a 
-                  href="mailto:support@pieq.ai" 
+                  href="https://mail.google.com/mail/u/0/#compose"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    // Track email link clicks
+                    if (typeof window !== 'undefined' && window.gtag) {
+                      window.gtag('event', 'click', {
+                        event_category: 'Footer',
+                        event_label: 'Email Click - support@pieq.ai'
+                      });
+                    }
+                  }}
                   className="hover:text-orange-400 transition-colors duration-200"
                 >
                   support@pieq.ai
