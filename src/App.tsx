@@ -96,7 +96,11 @@ export default function App() {
             whileTap={{ scale: 0.95 }}
           >
             <Button
-              onClick={() => setShowReadout(true)}
+              onClick={() => {
+                setShowReadout(true);
+                // Track Read Out button click
+                trackEvent('button_click', 'User Interaction', 'Read Out Button');
+              }}
               className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-2xl rounded-full p-4 group relative"
               size="lg"
             >
@@ -276,6 +280,8 @@ export default function App() {
                   onClick={() => {
                     setShowReadout(false);
                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    // Track Talk to Us button click
+                    trackEvent('button_click', 'User Interaction', 'Talk to Us Button');
                   }}
                 >
                   Talk to Us
@@ -285,6 +291,8 @@ export default function App() {
                   onClick={() => {
                     setShowReadout(false);
                     document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
+                    // Track Explore Platform button click
+                    trackEvent('button_click', 'User Interaction', 'Explore Platform Button');
                   }}
                 >
                   Explore Platform
@@ -295,7 +303,11 @@ export default function App() {
 
           <div className="flex justify-end pt-6 border-t border-gray-200">
             <Button 
-              onClick={() => setShowReadout(false)}
+              onClick={() => {
+                setShowReadout(false);
+                // Track Close Read Out button click
+                trackEvent('button_click', 'User Interaction', 'Close Read Out Button');
+              }}
               className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 px-8 py-2"
             >
               Close Read Out
