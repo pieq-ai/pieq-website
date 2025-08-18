@@ -42,3 +42,6 @@ coverage/
 # Tailwind CSS Specific
 # Generally, no specific Tailwind CSS files need to be ignored beyond standard build outputs
 # as Tailwind CSS typically compiles into your main CSS bundle.
+.DS_Store
+.DS_Store
+src/.DS_Store
