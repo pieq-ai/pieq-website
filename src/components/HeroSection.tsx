@@ -1,14 +1,7 @@
 import { Button } from "./ui/button";
-import { ArrowRight } from 'lucide-react';
+import { scrollToSection } from '../utils/scrollUtils';
 
 export default function HeroSection() {
-  const scrollToSection = (sectionId: string) => {
-    console.log(sectionId,'sectionId');
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section id="home" className="pt-24 pb-20 bg-gradient-to-br from-orange-50/50 via-white to-blue-accent/20 relative overflow-hidden">
@@ -53,11 +46,12 @@ export default function HeroSection() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-6 pt-8 justify-center">
-              <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-10 py-5 shadow-lg text-white" onClick={() => scrollToSection('contact')}>
-                Talk to us
-                <ArrowRight size={20} className="ml-2" />
-              </Button>
-              <Button size="lg" className="border-2 border-blue-primary text-blue-primary hover:bg-[var(--blue-primary)] hover:text-white text-lg px-10 py-5 transition-all duration-200" onClick={() => scrollToSection('features')}>
+              <Button 
+                size="lg" 
+                className="border-2 border-blue-primary text-blue-primary hover:bg-[var(--blue-primary)] hover:text-white text-lg px-10 py-5 transition-all duration-200 focus:outline-none" 
+                onClick={() => scrollToSection('features')}
+                aria-label="Explore our platform features"
+              >
                 Explore Platform
               </Button>
             </div>

@@ -1,10 +1,8 @@
 import { Card, CardContent } from "./ui/card";
-import { Button } from "./ui/button";
 import { 
   Building2, 
   Hotel, 
   CheckCircle,
-  ArrowRight,
   DollarSign,
   Users,
   FileText,
@@ -71,7 +69,7 @@ export default function SolutionsSection() {
 
         <div className="space-y-16">
           {solutions.map((solution, index) => (
-            <Card key={index} className="overflow-hidden border-0 shadow-xl bg-white">
+            <Card key={index} id={index === 0 ? 'insurance-management' : index === 1 ? 'hospitality-bookkeeping' : undefined} className="overflow-hidden border-0 shadow-xl bg-white">
               <CardContent className="p-0">
                 <div className={`grid lg:grid-cols-2 gap-8 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                   <div className={`relative ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
@@ -221,7 +219,7 @@ export default function SolutionsSection() {
                     <h4 className="text-xl text-orange-600 mb-4">{solution.subtitle}</h4>
                     <p className="text-gray-600 mb-6 text-lg leading-relaxed">{solution.description}</p>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {solution.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-3">
                           {feature.icon}
@@ -229,11 +227,6 @@ export default function SolutionsSection() {
                         </div>
                       ))}
                     </div>
-                    
-                    <Button className="text-white w-fit bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600">
-                      Learn More
-                      <ArrowRight size={20} className="ml-2" />
-                    </Button>
                   </div>
                 </div>
               </CardContent>

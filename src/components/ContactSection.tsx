@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -11,7 +11,7 @@ import {
   AlertCircle,
   Headphones
 } from 'lucide-react';
-import { FORM_CONFIG } from '../src/config/forms';
+import { FORM_CONFIG } from '../config/forms';
 
 
 
@@ -275,7 +275,7 @@ export default function ContactSection() {
                     <div className="flex-1 min-w-0">
                       <h4 className="mb-2 font-semibold text-gray-900">{info.title}</h4>
                       <a 
-                        href={`https://mail.google.com/mail/u/0/#compose`}
+                        href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(info.email)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => {
@@ -306,16 +306,6 @@ export default function ContactSection() {
                 <p className="text-orange-100 mb-4">
                   Our team can build custom automation solutions tailored to your specific industry and requirements.
                 </p>
-                <Button 
-                  variant="outline" 
-                  className="!bg-white text-orange-600 border-white hover:!bg-white hover:text-black hover:border-white"
-                  onClick={() => {
-                    const element = document.getElementById('contact');
-                    if (element) element.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  Discuss Custom Solutions
-                </Button>
               </CardContent>
             </Card>
           </div>
