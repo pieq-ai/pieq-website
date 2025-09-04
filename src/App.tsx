@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { ExternalLink, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import Header from "../components/Header";
-import HeroSection from "../components/HeroSection";
-import FeaturesSection from "../components/FeaturesSection";
-import SolutionsSection from "../components/SolutionsSection";
+import Header from "./components/Header";
+import HeroSection from "./components/HeroSection";
+import FeaturesSection from "./components/FeaturesSection";
+import SolutionsSection from "./components/SolutionsSection";
 
-import ContactSection from "../components/ContactSection";
-import Footer from "../components/Footer";
+import ContactSection from "./components/ContactSection";
+import Footer from "./components/Footer";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../components/ui/dialog";
-import { Button } from "../components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./components/ui/dialog";
+import { Button } from "./components/ui/button";
 
 export default function App() {
   const [showReadout, setShowReadout] = useState(false);
@@ -74,8 +74,15 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
+      {/* Skip to main content link for keyboard users */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-orange-500 text-white px-4 py-2 rounded-md z-50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+      >
+        Skip to main content
+      </a>
       <Header />
-      <main>
+      <main id="main-content">
         <HeroSection />
         <FeaturesSection />
         <SolutionsSection />
@@ -103,6 +110,7 @@ export default function App() {
               }}
               className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-2xl rounded-full p-4 group relative"
               size="lg"
+              aria-label="Open company read out information"
             >
               <motion.div
                 animate={{ rotate: [0, 5, -5, 0] }}

@@ -8,11 +8,11 @@ declare global {
         page_location?: string;
         page_path?: string;
         event_category?: string;
-        event_label?: string;
-        [key: string]: any;
+        event_label?: string | undefined;
+        [key: string]: string | number | boolean | undefined;
       }
     ) => void;
-    dataLayer: any[];
+    dataLayer: unknown[];
   }
 }
 
