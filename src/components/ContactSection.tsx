@@ -11,7 +11,8 @@ import {
   AlertCircle,
   Headphones
 } from 'lucide-react';
-import { FORM_CONFIG } from '../config/forms';
+import { contactService } from '../services/contactService';
+import { ContactFormData, ApiError } from '../types/api';
 
 
 
@@ -26,51 +27,83 @@ export default function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [validationErrors, setValidationErrors] = useState<{[key: string]: string}>({});
+
+  // Validation function
+  const validateForm = () => {
+    const errors: {[key: string]: string} = {};
+    
+    if (!formData.name.trim()) {
+      errors.name = 'Full name is required';
+    }
+    
+    if (!formData.email.trim()) {
+      errors.email = 'Work email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.email = 'Please enter a valid email address';
+    }
+    
+    if (!formData.company.trim()) {
+      errors.company = 'Company name is required';
+    }
+    
+    if (!formData.industry) {
+      errors.industry = 'Please select your industry';
+    }
+    
+    if (!formData.message.trim()) {
+      errors.message = 'Please tell us about your automation needs';
+    } else if (formData.message.trim().length < 10) {
+      errors.message = 'Please provide more details about your automation needs (at least 10 characters)';
+    }
+    
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setError('');
+    setValidationErrors({});
+
+    // Validate form before submission
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
-      // Using Formspree for secure email delivery
-      const response = await fetch(FORM_CONFIG.CONTACT_FORM_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          industry: formData.industry,
-          message: formData.message,
-          _subject: `${FORM_CONFIG.FORM.SUBJECT_PREFIX} ${formData.name}`,
-          _replyto: formData.email,
-          _to: FORM_CONFIG.EMAIL.CONTACT
-        }),
-      });
+      // Map form data to API format
+      const apiData: ContactFormData = {
+        full_name: formData.name,
+        work_email: formData.email,
+        company_name: formData.company,
+        industry: formData.industry,
+        automation_requirements: formData.message
+      };
 
-      if (response.ok) {
-        // Track successful form submission
-        if (typeof window !== 'undefined' && window.gtag) {
-          window.gtag('event', 'form_submit', {
-            event_category: 'Contact',
-            event_label: 'Contact Form Success'
-          });
-        }
-        
-        setIsSubmitted(true);
-        setFormData({ name: '', email: '', company: '', industry: '', message: '' });
-        setTimeout(() => {
-          setIsSubmitted(false);
-        }, 5000);
-      } else {
-        throw new Error('Failed to send message');
+      // Send to API
+      const response = await contactService.sendContactForm(apiData);
+      
+      // Track successful form submission
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'form_submit', {
+          event_category: 'Contact',
+          event_label: 'Contact Form Success'
+        });
       }
+      
+      console.log('Form submitted successfully:', response);
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', company: '', industry: '', message: '' });
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
     } catch (err) {
-      console.error('Formspree error:', err);
-      setError('Failed to send message. Please try again or contact us directly.');
+      console.error('Form submission error:', err);
+      const apiError = err as ApiError;
+      setError(apiError.message || 'Failed to send message. Please try again or contact us directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -81,6 +114,14 @@ export default function ContactSection() {
       ...prev,
       [e.target.name]: e.target.value
     }));
+    
+    // Clear validation error for this field
+    if (validationErrors[e.target.name]) {
+      setValidationErrors(prev => ({
+        ...prev,
+        [e.target.name]: ''
+      }));
+    }
   };
 
   const handleSelectChange = (value: string) => {
@@ -88,6 +129,14 @@ export default function ContactSection() {
       ...prev,
       industry: value
     }));
+    
+    // Clear validation error for industry field
+    if (validationErrors.industry) {
+      setValidationErrors(prev => ({
+        ...prev,
+        industry: ''
+      }));
+    }
   };
 
   const contactInfo = [
@@ -146,9 +195,11 @@ export default function ContactSection() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Your full name"
-                        required
-                        className="shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200"
+                        className={`shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200 ${validationErrors.name ? 'border-red-500' : ''}`}
                       />
+                      {validationErrors.name && (
+                        <p className="text-red-500 text-xs mt-1">{validationErrors.name}</p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm mb-2">Work Email *</label>
@@ -159,9 +210,11 @@ export default function ContactSection() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="your.email@company.com"
-                        required
-                        className="shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200"
+                        className={`shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200 ${validationErrors.email ? 'border-red-500' : ''}`}
                       />
+                      {validationErrors.email && (
+                        <p className="text-red-500 text-xs mt-1">{validationErrors.email}</p>
+                      )}
                     </div>
                   </div>
                   
@@ -173,15 +226,17 @@ export default function ContactSection() {
                       value={formData.company}
                       onChange={handleChange}
                       placeholder="Your company name"
-                      required
-                      className="shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200"
+                      className={`shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200 ${validationErrors.company ? 'border-red-500' : ''}`}
                     />
+                    {validationErrors.company && (
+                      <p className="text-red-500 text-xs mt-1">{validationErrors.company}</p>
+                    )}
                   </div>
 
                   <div>
-                    <label htmlFor="industry" className="block text-sm mb-2">Industry</label>
+                    <label htmlFor="industry" className="block text-sm mb-2">Industry *</label>
                     <Select value={formData.industry} onValueChange={handleSelectChange}>
-                      <SelectTrigger className="w-full border-none !bg-[#fef7f0] shadow-sm transition-all duration-200 rounded-md px-3 py-2 text-sm">
+                      <SelectTrigger className={`w-full border-none !bg-[#fef7f0] shadow-sm transition-all duration-200 rounded-md px-3 py-2 text-sm ${validationErrors.industry ? 'border-red-500' : ''}`}>
                         <SelectValue placeholder="Select your industry" />
                       </SelectTrigger>
                       <SelectContent className="bg-white border border-gray-200 shadow-lg rounded-md overflow-hidden">
@@ -208,10 +263,13 @@ export default function ContactSection() {
                         </SelectItem>
                       </SelectContent>
                     </Select>
+                    {validationErrors.industry && (
+                      <p className="text-red-500 text-xs mt-1">{validationErrors.industry}</p>
+                    )}
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-sm mb-2">Tell us about your automation needs</label>
+                    <label htmlFor="message" className="block text-sm mb-2">Tell us about your automation needs *</label>
                     <Textarea
                       id="message"
                       name="message"
@@ -219,10 +277,12 @@ export default function ContactSection() {
                       onChange={handleChange}
                       placeholder="What processes would you like to automate? What challenges are you facing?"
                       rows={4}
-                      maxLength={FORM_CONFIG.SECURITY.MAX_MESSAGE_LENGTH}
-                      className="shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200"
+                      maxLength={1000}
+                      className={`shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200 ${validationErrors.message ? 'border-red-500' : ''}`}
                     />
-
+                    {validationErrors.message && (
+                      <p className="text-red-500 text-xs mt-1">{validationErrors.message}</p>
+                    )}
                   </div>
                   
                   {error && (

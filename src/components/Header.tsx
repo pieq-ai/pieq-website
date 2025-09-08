@@ -44,16 +44,10 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8" aria-label="Main navigation">
             <button 
-              onClick={() => handleScrollToSection('home')} 
-              className="hover:text-orange-600 transition-colors focus:outline-none rounded px-2 py-1"
-            >
-              Platform
-            </button>
-            <button 
               onClick={() => handleScrollToSection('features')} 
               className="hover:text-orange-600 transition-colors focus:outline-none rounded px-2 py-1"
             >
-              Features
+              Platform
             </button>
             <button 
               onClick={() => handleScrollToSection('solutions')} 
@@ -96,16 +90,10 @@ export default function Header() {
           <div id="mobile-menu" className="md:hidden mt-4 pt-4 border-t border-border">
             <nav className="flex flex-col space-y-4" aria-label="Mobile navigation">
               <button 
-                onClick={() => handleScrollToSection('home')} 
-                className="text-left hover:text-orange-600 transition-colors focus:outline-none rounded px-2 py-1"
-              >
-                Platform
-              </button>
-              <button 
                 onClick={() => handleScrollToSection('features')} 
                 className="text-left hover:text-orange-600 transition-colors focus:outline-none rounded px-2 py-1"
               >
-                Features
+                Platform
               </button>
               <button 
                 onClick={() => handleScrollToSection('solutions')} 

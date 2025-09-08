@@ -4,11 +4,9 @@ import {
   Zap,
   Paintbrush,
   BarChart3,
-  ArrowRight,
   MessageCircle,
   Cpu
 } from 'lucide-react';
-import { Button } from "./ui/button";
 
 export default function FeaturesSection() {
   const features = [
@@ -271,8 +269,6 @@ export default function FeaturesSection() {
                         </circle>
                       </svg>
                     )}
-                    
-
                   </div>
                   
                   <div className="absolute bottom-4 left-4">
@@ -286,16 +282,9 @@ export default function FeaturesSection() {
                   <h3 className="text-xl mb-3 group-hover:text-orange-600 transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-600">
                     {feature.description}
                   </p>
-                  <Button variant="ghost" className="p-0 h-auto group-hover:text-orange-600" onClick={() => {
-                    const element = document.getElementById('contact');
-                    if (element) element.scrollIntoView({ behavior: 'smooth' });
-                  }}>
-                    Explore Platform Features
-                    <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
                 </div>
               </CardContent>
             </Card>
