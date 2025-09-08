@@ -12,7 +12,7 @@ npm install
 npm run dev
 
 # Run tests
-npm run test:run
+npm run test
 ```
 
 ## 📋 Prerequisites

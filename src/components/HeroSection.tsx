@@ -1,10 +1,11 @@
+
 import { Button } from "./ui/button";
 import { scrollToSection } from '../utils/scrollUtils';
 
 export default function HeroSection() {
 
   return (
-    <section id="home" className="pt-24 pb-20 bg-gradient-to-br from-orange-50/50 via-white to-blue-accent/20 relative overflow-hidden">
+    <section id="home" className="pt-16 pb-20 bg-gradient-to-br from-orange-50/50 via-white to-blue-accent/20 relative overflow-hidden">
       {/* Subtle background elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-200 to-orange-300 rounded-full blur-3xl"></div>
