@@ -84,7 +84,7 @@ export default function ContactSection() {
       };
 
       // Send to API
-      const response = await contactService.sendContactForm(apiData);
+      await contactService.sendContactForm(apiData);
       
       // Track successful form submission
       if (typeof window !== 'undefined' && window.gtag) {
@@ -94,20 +94,27 @@ export default function ContactSection() {
         });
       }
       
-      console.log('Form submitted successfully:', response);
+      // Form submitted successfully - logged in development only
+      if (import.meta.env.DEV) {
+        console.log('Form submitted successfully');
+      }
       setIsSubmitted(true);
       setFormData({ name: '', email: '', company: '', industry: '', message: '' });
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
     } catch (err) {
-      console.error('Form submission error:', err);
+      // Log error details only in development
+      if (import.meta.env.DEV) {
+        console.error('Form submission error:', err);
+      }
       const apiError = err as ApiError;
       setError(apiError.message || 'Failed to send message. Please try again or contact us directly.');
     } finally {
       setIsSubmitting(false);
     }
   };
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -195,6 +202,7 @@ export default function ContactSection() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Your full name"
+                        maxLength={100}
                         className={`shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200 ${validationErrors.name ? 'border-red-500' : ''}`}
                       />
                       {validationErrors.name && (
@@ -210,6 +218,7 @@ export default function ContactSection() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="your.email@company.com"
+                        maxLength={254}
                         className={`shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200 ${validationErrors.email ? 'border-red-500' : ''}`}
                       />
                       {validationErrors.email && (
@@ -226,6 +235,7 @@ export default function ContactSection() {
                       value={formData.company}
                       onChange={handleChange}
                       placeholder="Your company name"
+                      maxLength={100}
                       className={`shadow-sm focus:!bg-orange-50 focus:!border-[color-mix(in_oklab,var(--ring)_50%,transparent)] focus:!border-2 focus:!shadow-lg focus:!shadow-gray-200/50 transition-all duration-200 ${validationErrors.company ? 'border-red-500' : ''}`}
                     />
                     {validationErrors.company && (
