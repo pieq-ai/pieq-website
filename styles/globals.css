@@ -486,3 +486,49 @@ html {
     border-color: var(--blue-light);
   }
 }
+
+/* Legal Document Dialog Styling */
+.legal-document-content {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #374151;
+}
+
+.legal-document-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #111827;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.legal-document-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #1f2937;
+}
+
+.legal-document-content p {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.legal-document-content ul,
+.legal-document-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.legal-document-content li {
+  margin-bottom: 0.5rem;
+}
+
+.legal-document-content strong {
+  font-weight: 600;
+  color: #111827;
+}
