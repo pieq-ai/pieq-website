@@ -72,7 +72,7 @@ export const termsOfServiceHTML = `
 <p>PieQ may suspend or terminate access to the Service, including fee-based portions of the Service, for any User Account for which any amount is due but unpaid. In addition to the amount due for the Service, a delinquent User Account will be charged with fees, charges or expenses (including attorneys' fees) that are incidental to any chargeback or collection of any the unpaid amount, including collection fees. Overdue Fees will accrue interest at the rate of one percent (1%) per month or part thereof, cumulative monthly on the linked capital from the due date until the date of payment.</p>
 
 <h3>4.6 California Residents</h3>
-<p>The provider of services is PieQ, Inc., 1217 Sansom Street, Suite 5S, Philadelphia, Pennsylvania 19107, telephone (347) 549-4349. If you are a California resident, in accordance with Cal. Civ. Code §1789.3, you may report complaints to the Complaint Assistance Unit of the Division of Consumer Services of the California Department of Consumer Affairs by contacting them in writing at 1625 North Market Blvd., Suite N 112 Sacramento, CA 95834, or by telephone at (800) 952-5210 or (916) 445-1254.</p>
+<p>The provider of services is PieQ, Inc., 137 Canterbury Lane, Lansdale, PA 19446. If you are a California resident, in accordance with Cal. Civ. Code §1789.3, you may report complaints to the Complaint Assistance Unit of the Division of Consumer Services of the California Department of Consumer Affairs by contacting them in writing at 1625 North Market Blvd., Suite N 112 Sacramento, CA 95834, or by telephone at (800) 952-5210 or (916) 445-1254.</p>
 
 <h2>5. Term and Termination</h2>
 
