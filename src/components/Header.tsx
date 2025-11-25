@@ -1,19 +1,12 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import { Button } from "./ui/button";
 import { Menu, X } from 'lucide-react';
 import { scrollToSection } from '../utils/scrollUtils';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
 
   const handleScrollToSection = (sectionId: string) => {
-    // If we're not on the home page, navigate there first
-    if (location.pathname !== '/') {
-      window.location.href = `/#${sectionId}`;
-      return;
-    }
     scrollToSection(sectionId);
     setIsMenuOpen(false);
   };
@@ -23,8 +16,8 @@ export default function Header() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <Link 
-              to="/" 
+            <a 
+              href="#" 
               className="flex items-center space-x-2 px-3 py-2 focus:outline-none" 
               aria-label="PieQ Home"
             >
@@ -45,7 +38,7 @@ export default function Header() {
                 <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
               </svg>
               <span className="text-2xl font-bold text-gray-900">PieQ</span>
-            </Link>
+            </a>
           </div>
 
           {/* Desktop Navigation */}
