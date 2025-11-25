@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { ExternalLink, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from "./components/Header";
@@ -8,6 +9,8 @@ import SolutionsSection from "./components/SolutionsSection";
 
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
+import TermsOfService from "./pages/TermsOfService";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./components/ui/dialog";
 import { Button } from "./components/ui/button";
@@ -72,7 +75,7 @@ export default function App() {
 
 
 
-  return (
+  const HomePage = () => (
     <div className="min-h-screen">
       {/* Skip to main content link for keyboard users */}
       <a 
@@ -325,5 +328,14 @@ export default function App() {
         </Dialog>
       )}
     </div>
+  );
+
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/terms-of-service" element={<TermsOfService />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 }
