@@ -2,6 +2,7 @@ import React from 'react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { MemoryRouter } from 'react-router-dom'
 import '@testing-library/jest-dom'
 import App from '../App'
 
@@ -20,38 +21,46 @@ describe('Complete Application Test Suite', () => {
     vi.clearAllMocks()
   })
 
+  const renderWithRouter = (initialEntries = ['/']) => {
+    return render(
+      <MemoryRouter initialEntries={initialEntries}>
+        <App />
+      </MemoryRouter>
+    )
+  }
+
   it('renders the application without crashing', () => {
-    render(<App />)
+    renderWithRouter()
     expect(screen.getByText('Skip to main content')).toBeInTheDocument()
   })
 
   it('has skip link for accessibility', () => {
-    render(<App />)
+    renderWithRouter()
     const skipLink = screen.getByText('Skip to main content')
     expect(skipLink).toHaveAttribute('href', '#main-content')
   })
 
   it('has main content landmark', () => {
-    render(<App />)
+    renderWithRouter()
     const mainContent = screen.getByRole('main')
     expect(mainContent).toHaveAttribute('id', 'main-content')
   })
 
   it('has navigation with proper aria-label', () => {
-    render(<App />)
+    renderWithRouter()
     const nav = screen.getByLabelText('Main navigation')
     expect(nav).toBeInTheDocument()
   })
 
   it('has mobile menu button with proper ARIA attributes', () => {
-    render(<App />)
+    renderWithRouter()
     const menuButton = screen.getByLabelText('Open menu')
     expect(menuButton).toHaveAttribute('aria-expanded', 'false')
     expect(menuButton).toHaveAttribute('aria-controls', 'mobile-menu')
   })
 
   it('has proper heading structure', () => {
-    render(<App />)
+    renderWithRouter()
     
     // Check for h1
     const h1 = screen.getByRole('heading', { level: 1 })
@@ -63,7 +72,7 @@ describe('Complete Application Test Suite', () => {
   })
 
   it('has form with proper labels', () => {
-    render(<App />)
+    renderWithRouter()
     
     // Check for form inputs with labels
     expect(screen.getByLabelText('Full Name *')).toBeInTheDocument()
@@ -73,14 +82,14 @@ describe('Complete Application Test Suite', () => {
   })
 
   it('has read out button with proper aria-label', () => {
-    render(<App />)
+    renderWithRouter()
     
     const readOutButton = screen.getByLabelText('Open company read out information')
     expect(readOutButton).toBeInTheDocument()
   })
 
   it('has email links with Gmail integration', () => {
-    render(<App />)
+    renderWithRouter()
     
     // Check for email links
     const salesLinks = screen.getAllByText('sales@pieq.ai')
@@ -102,7 +111,7 @@ describe('Complete Application Test Suite', () => {
   })
 
   it('has section IDs for navigation', () => {
-    render(<App />)
+    renderWithRouter()
     
     // Check that sections exist by their IDs
     expect(document.getElementById('home')).toBeInTheDocument()
@@ -112,7 +121,7 @@ describe('Complete Application Test Suite', () => {
   })
 
   it('has proper focus styles on interactive elements', () => {
-    render(<App />)
+    renderWithRouter()
     
     // Check that buttons have focus styles
     const buttons = screen.getAllByRole('button')
@@ -128,7 +137,7 @@ describe('Complete Application Test Suite', () => {
   // Interactive functionality tests
   it('opens and closes mobile menu', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     // Find mobile menu button
     const menuButton = screen.getByLabelText('Open menu')
@@ -147,7 +156,7 @@ describe('Complete Application Test Suite', () => {
 
   it('opens and closes read out modal', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     // Find and click the read out button
     const readOutButton = screen.getByLabelText('Open company read out information')
@@ -168,7 +177,7 @@ describe('Complete Application Test Suite', () => {
 
   it('handles form input changes', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     const nameInput = screen.getByLabelText('Full Name *')
     const emailInput = screen.getByLabelText('Work Email *')
@@ -188,7 +197,7 @@ describe('Complete Application Test Suite', () => {
 
   it('shows validation errors for empty required fields', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     const submitButton = screen.getByText('Submit')
     await user.click(submitButton)
@@ -210,7 +219,7 @@ describe('Complete Application Test Suite', () => {
     // Mock failed fetch response
     vi.mocked(fetch).mockRejectedValueOnce(new Error('Network error'))
     
-    render(<App />)
+    renderWithRouter()
     
     // Fill out form
     await user.type(screen.getByLabelText('Full Name *'), 'John Doe')
@@ -228,7 +237,7 @@ describe('Complete Application Test Suite', () => {
 
   it('tracks Google Analytics events', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     // Mock gtag
     const mockGtag = vi.mocked(window.gtag)
@@ -246,7 +255,7 @@ describe('Complete Application Test Suite', () => {
 
   it('handles navigation button clicks', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     // Test navigation buttons (use getAllByText to handle multiple instances)
     const platformButtons = screen.getAllByText('Platform')
@@ -266,7 +275,7 @@ describe('Complete Application Test Suite', () => {
 
   it('handles Talk to Us button clicks', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     // Find all "Talk to us" buttons
     const talkToUsButtons = screen.getAllByText('Talk to us')
@@ -280,7 +289,7 @@ describe('Complete Application Test Suite', () => {
 
   it('handles Explore Platform button clicks', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     // Find all "Explore Platform" buttons
     const exploreButtons = screen.getAllByText('Explore Platform')
@@ -295,7 +304,7 @@ describe('Complete Application Test Suite', () => {
 
   it('handles footer navigation clicks', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     // Test footer navigation buttons (use getAllByText to handle multiple instances)
     const coreFeaturesButtons = screen.getAllByText('Core Features')
@@ -321,7 +330,7 @@ describe('Complete Application Test Suite', () => {
 
   it('handles email link clicks', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     // Find email links
     const salesLinks = screen.getAllByText('sales@pieq.ai')
@@ -346,20 +355,22 @@ describe('Complete Application Test Suite', () => {
 
   it('handles logo link clicks', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
-    // Find logo links
+    // Find logo links (Header uses Link with href="/", Footer uses href="#")
     const logoLinks = screen.getAllByLabelText('PieQ Home')
     
     for (const link of logoLinks) {
       await user.click(link)
-      expect(link).toHaveAttribute('href', '#')
+      // Header logo uses React Router Link (href="/"), Footer uses href="#"
+      const href = link.getAttribute('href')
+      expect(href === '/' || href === '#').toBe(true)
     }
   })
 
   it('handles industry selection in form', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     // Find industry select
     const industrySelect = screen.getByRole('combobox')
@@ -372,7 +383,7 @@ describe('Complete Application Test Suite', () => {
 
   it('handles mobile menu toggle functionality', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     const menuButton = screen.getByLabelText('Open menu')
     
@@ -390,7 +401,7 @@ describe('Complete Application Test Suite', () => {
 
   it('handles scroll to section functionality', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     // Test scroll to different sections
     const platformButton = screen.getAllByText('Platform')[0]
@@ -405,7 +416,7 @@ describe('Complete Application Test Suite', () => {
 
   it('handles footer navigation clicks', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     // Test footer navigation links - use getAllByText for multiple elements
     const insuranceLinks = screen.getAllByText('Insurance Management')
@@ -420,7 +431,7 @@ describe('Complete Application Test Suite', () => {
 
   it('handles email link clicks with analytics tracking', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     // Mock gtag
     const mockGtag = vi.fn()
@@ -445,7 +456,7 @@ describe('Complete Application Test Suite', () => {
 
   it('handles form input with special characters', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderWithRouter()
     
     const nameInput = screen.getByLabelText('Full Name *')
     const emailInput = screen.getByLabelText('Work Email *')
@@ -467,14 +478,14 @@ describe('Complete Application Test Suite', () => {
     const mockGtag = vi.fn()
     window.gtag = mockGtag
     
-    render(<App />)
+    renderWithRouter()
     
     // Check that gtag config is called with the actual GA ID and additional parameters
     expect(mockGtag).toHaveBeenCalledWith('config', 'G-TZ87S43S52', expect.any(Object))
   })
 
   it('handles all solution card features display', () => {
-    render(<App />)
+    renderWithRouter()
     
     // Check that all solution features are displayed
     expect(screen.getByText('Commission Reconciliation')).toBeInTheDocument()
@@ -493,7 +504,7 @@ describe('Complete Application Test Suite', () => {
   })
 
   it('handles white label features display', () => {
-    render(<App />)
+    renderWithRouter()
     
     // Check white label features
     expect(screen.getByText('White Label Solutions')).toBeInTheDocument()

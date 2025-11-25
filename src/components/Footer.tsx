@@ -1,16 +1,10 @@
-import { useState } from 'react';
 import {
   Mail,
   Headphones
 } from 'lucide-react';
 import { scrollToSection } from '../utils/scrollUtils';
-import LegalDocumentDialog from './LegalDocumentDialog';
-import { termsOfServiceHTML, privacyPolicyHTML } from '../data/legalDocuments';
 
 export default function Footer() {
-  const [showTermsDialog, setShowTermsDialog] = useState(false);
-  const [showPrivacyDialog, setShowPrivacyDialog] = useState(false);
-  const [privacyFromTerms, setPrivacyFromTerms] = useState(false);
 
   const footerLinks = {
     Platform: [
@@ -138,10 +132,11 @@ export default function Footer() {
               © 2025 PieQ. All rights reserved.
             </p>
             <div className="flex items-center gap-2 text-gray-400 text-sm flex-shrink-0 sm:mr-32 md:mr-36 rounded-full px-4 py-2">
-              <button
+              <a
+                href="/privacy-policy"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => {
-                  setPrivacyFromTerms(false);
-                  setShowPrivacyDialog(true);
                   if (typeof window !== 'undefined' && window.gtag) {
                     window.gtag('event', 'click', {
                       event_category: 'Footer',
@@ -149,15 +144,17 @@ export default function Footer() {
                     });
                   }
                 }}
-                className="hover:text-orange-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900 whitespace-nowrap flex-shrink-0"
+                className="hover:text-orange-400 transition-colors duration-200 focus:outline-none whitespace-nowrap flex-shrink-0"
                 aria-label="View Privacy Policy"
               >
                 Privacy Policy
-              </button>
+              </a>
               <span className="text-gray-600 flex-shrink-0">|</span>
-              <button
+              <a
+                href="/terms-of-service"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => {
-                  setShowTermsDialog(true);
                   if (typeof window !== 'undefined' && window.gtag) {
                     window.gtag('event', 'click', {
                       event_category: 'Footer',
@@ -165,44 +162,15 @@ export default function Footer() {
                     });
                   }
                 }}
-                className="hover:text-orange-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900 whitespace-nowrap flex-shrink-0"
+                className="hover:text-orange-400 transition-colors duration-200 focus:outline-none  whitespace-nowrap flex-shrink-0"
                 aria-label="View Terms of Service"
               >
                 Terms of Service
-              </button>
+              </a>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Legal Document Dialogs */}
-      <LegalDocumentDialog
-        open={showTermsDialog}
-        onOpenChange={setShowTermsDialog}
-        title="Terms of Service"
-        content={termsOfServiceHTML}
-        onNavigateToPrivacy={() => {
-          setPrivacyFromTerms(true);
-          setShowTermsDialog(false);
-          setShowPrivacyDialog(true);
-        }}
-      />
-      <LegalDocumentDialog
-        open={showPrivacyDialog}
-        onOpenChange={(open) => {
-          setShowPrivacyDialog(open);
-          if (!open) {
-            setPrivacyFromTerms(false);
-          }
-        }}
-        title="Privacy Policy"
-        content={privacyPolicyHTML}
-        onNavigateToTerms={() => {
-          setShowPrivacyDialog(false);
-          setShowTermsDialog(true);
-        }}
-        showBackButton={privacyFromTerms}
-      />
     </footer>
   );
 }
