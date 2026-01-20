@@ -1,4 +1,4 @@
-import { ArrowRight, Twitter, Linkedin, Github } from 'lucide-react';
+import { ArrowRight, Linkedin } from 'lucide-react';
 import logo from "../assets/f5cb44d26c3dd245f0b3a59ffa05a4fffa42de64.png";
 
 export default function Footer() {
@@ -71,8 +71,8 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {
-                if (typeof window !== 'undefined' && (window as any).gtag) {
-                  (window as any).gtag('event', 'click', {
+                if (typeof window !== 'undefined' && window.gtag) {
+                  window.gtag('event', 'click', {
                     event_category: 'Footer',
                     event_label: 'Privacy Policy'
                   });
@@ -87,8 +87,8 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {
-                if (typeof window !== 'undefined' && (window as any).gtag) {
-                  (window as any).gtag('event', 'click', {
+                if (typeof window !== 'undefined' && window.gtag) {
+                  window.gtag('event', 'click', {
                     event_category: 'Footer',
                     event_label: 'Terms of Service'
                   });

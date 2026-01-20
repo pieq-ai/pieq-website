@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Cpu, Zap, Share2, Layers, Search, BellRing, Target, Activity, MessageSquare } from 'lucide-react';
+import { Zap, Share2, Layers, BellRing, Target, Activity, MessageSquare } from 'lucide-react';
 
 const features = [
   {

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Shield, Activity, Hotel, ChevronRight } from 'lucide-react';
+import { Shield, Hotel, ChevronRight } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";

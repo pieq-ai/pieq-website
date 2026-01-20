@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion';
-import { Globe, Layers, ShieldCheck } from 'lucide-react';
 import { FlowOrchestrator } from './FlowOrchestrator';
-import diagramImg from "../assets/04b827c73372fc28741e6ffe8804f553fba38970.png";
 
 export default function ActionableIntelligence() {
   return (

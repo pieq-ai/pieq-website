@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Database, Zap, Cpu, ShieldCheck, Target, Layers, ArrowRight, Activity, Share2 } from 'lucide-react';
+import { Database, Cpu, ShieldCheck, Target, Activity, Share2 } from 'lucide-react';
 
 export const FlowOrchestrator = () => {
   return (

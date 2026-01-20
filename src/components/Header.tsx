@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from "./ui/button";
-import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from "../assets/f5cb44d26c3dd245f0b3a59ffa05a4fffa42de64.png";
 

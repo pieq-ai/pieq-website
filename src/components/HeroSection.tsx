@@ -55,7 +55,7 @@ export default function HeroSection() {
                 { top: "Complete", bottom: "Visibility" },
                 { top: "Break Down", bottom: "Silos" },
                 { top: "Actionable", bottom: "Insights" }
-              ].map((item, i) => (
+              ].map((item) => (
                 <div key={item.top} className="flex gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#A6823C] mt-1.5 shrink-0" />
                   <div className="flex flex-col">

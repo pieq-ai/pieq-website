@@ -47,8 +47,8 @@ function HomePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => {
-                    if (typeof window !== 'undefined' && (window as any).gtag) {
-                      (window as any).gtag('event', 'click', {
+                    if (typeof window !== 'undefined' && window.gtag) {
+                      window.gtag('event', 'click', {
                         event_category: 'CTA',
                         event_label: 'Email Click - sales@pieq.ai'
                       });
@@ -67,8 +67,8 @@ function HomePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => {
-                    if (typeof window !== 'undefined' && (window as any).gtag) {
-                      (window as any).gtag('event', 'click', {
+                    if (typeof window !== 'undefined' && window.gtag) {
+                      window.gtag('event', 'click', {
                         event_category: 'CTA',
                         event_label: 'Email Click - support@pieq.ai'
                       });

@@ -17,8 +17,6 @@ export default function NetworkTopology() {
     { id: 'workflow', x: 300, y: 320, label: 'Workflows', color: '#6b7280' }
   ];
 
-  const allNodes = [...centerNodes, ...outerNodes];
-
   return (
     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-accent/20">
       <svg
