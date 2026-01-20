@@ -1,258 +1,207 @@
-import { Card, CardContent } from "./ui/card";
-import { 
-  Building2, 
-  Hotel, 
-  CheckCircle,
-  DollarSign,
-  Users,
-  FileText,
-  BarChart3,
-  Shield,
-  Clock
-} from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Shield, Hotel, ChevronRight } from 'lucide-react';
+import { ImageWithFallback } from './figma/ImageWithFallback';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+
+// Hospitality Assets from user snippet
+import ratioAnalysisImg from '../assets/9a04cfad2abd8f6bf66b472c361042ec7403f18b.png';
+import plAnalysisImg from '../assets/8151acb666ed6fa3349666a73ffff9a0976b9ee2.png';
+
+// Insurance Assets - Using confirmed dashboard IDs from LaptopCarousel
+import agentChatImg from '../assets/1b14404a46a61dcf8448ff60458f26202823f8c2.png';
+import performanceImg from '../assets/03f96de82b2dcb0e29a988ebe890ff1444a73938.png';
+import salesLeaderImg from '../assets/079bbee345ad0b81589ec054760733fd82b8393e.png';
+
+const solutions = [
+  {
+    id: 'hospitality',
+    title: 'Hospitality Bookkeeper',
+    subtitle: 'AI-ORCHESTRATED FINANCIAL OPERATIONS FOR HOSPITALITY',
+    description: 'An AI-powered financial operations solution purpose-built for restaurants and hospitality groups. Powered by FLOW, it orchesrates bookkeeping, reconciliation, and reporting across locations-turning daily financial activity into real-time operational insight',
+    icon: Hotel,
+    images: [
+      ratioAnalysisImg,
+      plAnalysisImg,
+      'https://images.unsplash.com/photo-1753955900083-b62ee8d97805?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXN0YXVyYW50JTIwYm9va2tlZXBpbmclMjBmaW5hbmNlJTIwZGFzaGJvYXJkfGVufDF8fHx8MTc2ODU0MDIzN3ww&ixlib=rb-4.1.0&q=80&w=1080',
+    ],
+    features: [
+      'Automated Reconciliation',
+      'Financial Reporting',
+      'Tax Preparation Support',
+      'Hospitality Context',
+      'POS & Vendor Integrations',
+      'Multi-Location/Multi Client Management'
+    ]
+  },
+  {
+    id: 'insurance',
+    title: 'Insurance Architect',
+    subtitle: 'AI-ORCHESTRATED INSURANCE OPERATIONS',
+    description: 'AI workflow orchestration platform for insurance agencies and MGAs, powered by FLOW, it coordinates commission reconciliation, payouts, policy workflows, and agent experiences-executing insurance operations with speed and precision.',
+    icon: Shield,
+    images: [
+      agentChatImg,
+      performanceImg,
+      salesLeaderImg,
+      'https://images.unsplash.com/photo-1721593979313-8661afd501c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBmaW5hbmNpYWwlMjBkYXNoYm9hcmQlMjBkYXRhJTIwdmlzdWFsaXphdGlvbiUyMG9mZmljZXxlbnwxfHx8fDE3Njg1MzQxODB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    ],
+    features: [
+      'Commission Reconciliation',
+      'Automated Payout Management',
+      'Policy workflow management',
+      'Agent experience',
+      'Agent self service portal',
+      'Agentic AI dashboard',
+      '',
+    ]
+  }
+];
 
 export default function SolutionsSection() {
-  const solutions = [
-    {
-      icon: <Building2 className="text-orange-600" size={48} />,
-      title: "Insurance Agency Management",
-      subtitle: "Streamline Your Insurance Operations",
-      description: "Complete automation solution for insurance agencies with commission reconciliation, payout management, and agent portals.",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
-      features: [
-        { icon: <DollarSign size={20} className="text-green-600" />, text: "Commission Reconciliation" },
-        { icon: <Users size={20} className="text-blue-600" />, text: "Automated Payout Management" },
-        { icon: <Users size={20} className="text-purple-600" />, text: "Agent Self-Service Portal" },
-        { icon: <FileText size={20} className="text-orange-600" />, text: "Policy Management" },
-        { icon: <Shield size={20} className="text-red-600" />, text: "Claims Processing" },
-        { icon: <BarChart3 size={20} className="text-indigo-600" />, text: "Compliance Reporting" }
-      ]
-    },
-    {
-      icon: <Hotel className="text-red-600" size={48} />,
-      title: "Hospitality Bookkeeping",
-      subtitle: "Seamless Financial Management",
-      description: "Comprehensive bookkeeping solution designed specifically for hospitality industry professionals and their clients.",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop",
-      features: [
-        { icon: <Users size={20} className="text-blue-600" />, text: "Multi-Client Management" },
-        { icon: <CheckCircle size={20} className="text-green-600" />, text: "Automated Reconciliation" },
-        { icon: <BarChart3 size={20} className="text-purple-600" />, text: "POS System Integration" },
-        { icon: <FileText size={20} className="text-orange-600" />, text: "Financial Reporting" },
-        { icon: <DollarSign size={20} className="text-green-600" />, text: "Tax Preparation Support" },
-        { icon: <Clock size={20} className="text-indigo-600" />, text: "Real-time Analytics" }
-      ]
-    }
-  ];
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    arrows: false,
+    dotsClass: "slick-dots custom-dots",
+    fade: true,
+  };
 
-  const whiteLabelFeatures = [
-    "Custom Branding",
-    "Revenue Sharing",
-    "Custom Documentation",
-    "Scalable Pricing"
-  ];
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <section id="solutions" className="py-20 bg-white">
+    <section id="solutions" className="py-32 bg-white relative z-10">
+      <style>{`
+        .custom-dots {
+          position: absolute;
+          bottom: 24px;
+          display: block;
+          width: 100%;
+          padding: 0;
+          margin: 0;
+          list-style: none;
+          text-align: center;
+          z-index: 10;
+        }
+        .custom-dots li {
+          position: relative;
+          display: inline-block;
+          width: 20px;
+          height: 2px;
+          margin: 0 4px;
+          padding: 0;
+          cursor: pointer;
+        }
+        .custom-dots li button {
+          font-size: 0;
+          line-height: 0;
+          display: block;
+          width: 20px;
+          height: 2px;
+          cursor: pointer;
+          color: transparent;
+          border: 0;
+          outline: none;
+          background: #000;
+          opacity: 0.1;
+          transition: all 0.3s ease;
+        }
+        .custom-dots li.slick-active button {
+          opacity: 1;
+          background: #A6823C;
+          width: 30px;
+        }
+      `}</style>
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl mb-6">
-            Industry-Specific
-            <span className="block text-[#ed2200]">
-              Solutions
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Built on our powerful BPM platform, these specialized products deliver targeted automation for specific industries with white-label capabilities.
+        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-12">
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-[#A6823C] font-black uppercase tracking-[0.4em] text-[10px] mb-6"
+            >
+              Vertical Specialization
+            </motion.div>
+            <h3 className="text-5xl md:text-7xl font-light text-zinc-950 leading-[1.1] tracking-tighter">
+              Orchestrating <br />
+              <span className="font-bold">Industry Slices.</span>
+            </h3>
+          </div>
+          <p className="text-zinc-500 text-lg max-w-sm font-normal leading-relaxed">
+            PieQ deploys <span className="text-black font-bold">FLOW</span>—the industry's first agentic AI core—to help leaders orchestrate complex business processes with precision.
           </p>
         </div>
 
-        <div className="space-y-16">
+        <div className="grid lg:grid-cols-2 gap-12">
           {solutions.map((solution, index) => (
-            <Card key={index} id={index === 0 ? 'insurance-management' : index === 1 ? 'hospitality-bookkeeping' : undefined} className="overflow-hidden border-0 shadow-xl bg-white">
-              <CardContent className="p-0">
-                <div className={`grid lg:grid-cols-2 gap-8 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
-                  <div className={`relative ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                    {/* Custom SVG Graphics */}
-                    <div className="w-full h-64 lg:h-full bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center overflow-hidden">
-                      {index === 0 ? (
-                        // Insurance Agency Management
-                        <svg viewBox="0 0 400 300" className="w-full h-full">
-                          <defs>
-                            <linearGradient id={`insuranceGradient${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stopColor="#ea580c" />
-                              <stop offset="100%" stopColor="#dc2626" />
-                            </linearGradient>
-                            <linearGradient id={`insuranceSecondary${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stopColor="#fed7aa" />
-                              <stop offset="100%" stopColor="#fecaca" />
-                            </linearGradient>
-                          </defs>
-                          
-                          {/* Office building */}
-                          <rect x="50" y="80" width="80" height="120" fill="url(#insuranceGradient0)" opacity="0.8" />
-                          <rect x="60" y="90" width="15" height="15" fill="white" opacity="0.8" />
-                          <rect x="80" y="90" width="15" height="15" fill="white" opacity="0.8" />
-                          <rect x="100" y="90" width="15" height="15" fill="white" opacity="0.8" />
-                          <rect x="60" y="110" width="15" height="15" fill="white" opacity="0.8" />
-                          <rect x="80" y="110" width="15" height="15" fill="white" opacity="0.8" />
-                          <rect x="100" y="110" width="15" height="15" fill="white" opacity="0.8" />
-                          <rect x="60" y="130" width="15" height="15" fill="white" opacity="0.8" />
-                          <rect x="80" y="130" width="15" height="15" fill="white" opacity="0.8" />
-                          <rect x="100" y="130" width="15" height="15" fill="white" opacity="0.8" />
-                          
-                          {/* Insurance documents */}
-                          <rect x="180" y="60" width="60" height="80" rx="4" fill="white" stroke="#ea580c" strokeWidth="2" />
-                          <line x1="190" y1="75" x2="230" y2="75" stroke="#ea580c" strokeWidth="2" />
-                          <line x1="190" y1="85" x2="220" y2="85" stroke="#ea580c" strokeWidth="1" opacity="0.6" />
-                          <line x1="190" y1="95" x2="225" y2="95" stroke="#ea580c" strokeWidth="1" opacity="0.6" />
-                          <line x1="190" y1="105" x2="215" y2="105" stroke="#ea580c" strokeWidth="1" opacity="0.6" />
-                          <text x="210" y="125" textAnchor="middle" fontSize="10" fill="#ea580c" fontFamily="system-ui, -apple-system, sans-serif">POLICY</text>
-                          
-                          {/* Commission calculation */}
-                          <rect x="280" y="80" width="80" height="60" rx="8" fill="url(#insuranceSecondary0)" />
-                          <text x="320" y="100" textAnchor="middle" fontSize="12" fill="#ea580c" fontFamily="system-ui, -apple-system, sans-serif">Commission</text>
-                          <text x="320" y="115" textAnchor="middle" fontSize="16" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">$2,450</text>
-                          <text x="320" y="130" textAnchor="middle" fontSize="10" fill="#ea580c" fontFamily="system-ui, -apple-system, sans-serif">Auto-calculated</text>
-                          
-                          {/* Agent network */}
-                          <circle cx="150" cy="220" r="12" fill="#ea580c" />
-                          <circle cx="200" cy="200" r="10" fill="#dc2626" opacity="0.8" />
-                          <circle cx="250" cy="210" r="10" fill="#dc2626" opacity="0.8" />
-                          <circle cx="300" cy="190" r="10" fill="#dc2626" opacity="0.8" />
-                          
-                          {/* Agent connections */}
-                          <line x1="150" y1="220" x2="200" y2="200" stroke="#ea580c" strokeWidth="2" opacity="0.6" />
-                          <line x1="150" y1="220" x2="250" y2="210" stroke="#ea580c" strokeWidth="2" opacity="0.6" />
-                          <line x1="150" y1="220" x2="300" y2="190" stroke="#ea580c" strokeWidth="2" opacity="0.6" />
-                          
-                          {/* Agent labels */}
-                          <text x="150" y="250" textAnchor="middle" fontSize="8" fill="#ea580c" fontFamily="system-ui, -apple-system, sans-serif">HQ</text>
-                          <text x="200" y="185" textAnchor="middle" fontSize="6" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">Agent 1</text>
-                          <text x="250" y="195" textAnchor="middle" fontSize="6" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">Agent 2</text>
-                          <text x="300" y="175" textAnchor="middle" fontSize="6" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">Agent 3</text>
-                          
-                          {/* Data flow arrows */}
-                          <path d="M260 70 L270 65 L260 60" stroke="#ea580c" strokeWidth="2" fill="none" />
-                          <path d="M160 200 L170 195 L160 190" stroke="#ea580c" strokeWidth="2" fill="none" />
-                        </svg>
-                      ) : (
-                        // Hospitality Bookkeeping
-                        <svg viewBox="0 0 400 300" className="w-full h-full">
-                          <defs>
-                            <linearGradient id={`hospitalityGradient${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stopColor="#dc2626" />
-                              <stop offset="100%" stopColor="#ea580c" />
-                            </linearGradient>
-                            <linearGradient id={`hospitalitySecondary${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stopColor="#fecaca" />
-                              <stop offset="100%" stopColor="#fed7aa" />
-                            </linearGradient>
-                          </defs>
-                          
-                          {/* Restaurant/Hotel building */}
-                          <rect x="60" y="100" width="100" height="80" fill="url(#hospitalityGradient1)" opacity="0.8" />
-                          <rect x="70" y="120" width="20" height="25" fill="white" opacity="0.8" />
-                          <rect x="100" y="120" width="20" height="25" fill="white" opacity="0.8" />
-                          <rect x="130" y="120" width="20" height="25" fill="white" opacity="0.8" />
-                          <rect x="85" y="155" width="30" height="25" fill="#8b4513" />
-                          <text x="110" y="110" textAnchor="middle" fontSize="10" fill="white" fontFamily="system-ui, -apple-system, sans-serif">RESTAURANT</text>
-                          
-                          {/* POS Terminal */}
-                          <rect x="200" y="80" width="60" height="40" rx="6" fill="white" stroke="#dc2626" strokeWidth="2" />
-                          <rect x="210" y="90" width="40" height="20" fill="#dc2626" opacity="0.2" />
-                          <text x="230" y="103" textAnchor="middle" fontSize="8" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">POS System</text>
-                          <circle cx="245" cy="105" r="3" fill="#22c55e" />
-                          
-                          {/* Receipt/Invoice */}
-                          <rect x="190" y="140" width="40" height="60" rx="3" fill="white" stroke="#dc2626" strokeWidth="1" />
-                          <line x1="195" y1="150" x2="225" y2="150" stroke="#dc2626" strokeWidth="1" />
-                          <line x1="195" y1="155" x2="220" y2="155" stroke="#dc2626" strokeWidth="0.5" opacity="0.6" />
-                          <line x1="195" y1="160" x2="222" y2="160" stroke="#dc2626" strokeWidth="0.5" opacity="0.6" />
-                          <line x1="195" y1="165" x2="218" y2="165" stroke="#dc2626" strokeWidth="0.5" opacity="0.6" />
-                          <line x1="195" y1="175" x2="225" y2="175" stroke="#dc2626" strokeWidth="1" />
-                          <text x="210" y="190" textAnchor="middle" fontSize="8" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">$127.50</text>
-                          
-                          {/* Financial Dashboard */}
-                          <rect x="280" y="60" width="80" height="100" rx="8" fill="url(#hospitalitySecondary1)" />
-                          <text x="320" y="80" textAnchor="middle" fontSize="10" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">Daily Summary</text>
-                          
-                          {/* Revenue chart bars */}
-                          <rect x="290" y="130" width="8" height="20" fill="#dc2626" />
-                          <rect x="305" y="120" width="8" height="30" fill="#dc2626" />
-                          <rect x="320" y="110" width="8" height="40" fill="#dc2626" />
-                          <rect x="335" y="125" width="8" height="25" fill="#dc2626" />
-                          <rect x="350" y="115" width="8" height="35" fill="#dc2626" />
-                          
-                          <text x="320" y="95" textAnchor="middle" fontSize="8" fill="#dc2626" fontFamily="system-ui, -apple-system, sans-serif">Revenue</text>
-                          
-                          {/* Multi-client indicators */}
-                          <circle cx="50" cy="50" r="15" fill="#dc2626" opacity="0.8" />
-                          <text x="50" y="55" textAnchor="middle" fontSize="8" fill="white" fontFamily="system-ui, -apple-system, sans-serif">C1</text>
-                          <circle cx="100" cy="40" r="15" fill="#ea580c" opacity="0.8" />
-                          <text x="100" y="45" textAnchor="middle" fontSize="8" fill="white" fontFamily="system-ui, -apple-system, sans-serif">C2</text>
-                          <circle cx="150" cy="50" r="15" fill="#dc2626" opacity="0.8" />
-                          <text x="150" y="55" textAnchor="middle" fontSize="8" fill="white" fontFamily="system-ui, -apple-system, sans-serif">C3</text>
-                          
-                          {/* Data flow connections */}
-                          <line x1="230" y1="100" x2="280" y2="80" stroke="#dc2626" strokeWidth="2" strokeDasharray="5,5" opacity="0.7" />
-                          <line x1="210" y1="140" x2="280" y2="120" stroke="#dc2626" strokeWidth="2" strokeDasharray="5,5" opacity="0.7" />
-                          
-                          {/* Automated sync indicator */}
-                          <circle cx="250" cy="220" r="20" fill="#22c55e" opacity="0.2" />
-                          <circle cx="250" cy="220" r="12" fill="#22c55e" />
-                          <text x="250" y="225" textAnchor="middle" fontSize="8" fill="white" fontFamily="system-ui, -apple-system, sans-serif">SYNC</text>
-                          <text x="250" y="250" textAnchor="middle" fontSize="8" fill="#22c55e" fontFamily="system-ui, -apple-system, sans-serif">Auto-Reconciled</text>
-                        </svg>
-                      )}
-                    </div>
-                    
-                    <div className="absolute bottom-6 left-6">
-                      <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-lg">
-                        {solution.icon}
+            <motion.div 
+              key={solution.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 }}
+              className="group relative flex flex-col bg-zinc-50/50 border border-zinc-100 overflow-hidden"
+            >
+              <div className="aspect-[16/10] overflow-hidden relative bg-black">
+                {solution.images && (
+                  <Slider {...settings} className="h-full">
+                    {solution.images.map((img, i) => (
+                      <div key={i} className="h-full relative outline-none overflow-hidden">
+                        <ImageWithFallback 
+                          src={img} 
+                          alt={`${solution.title} - view ${i + 1}`}
+                          className="object-cover w-full h-[350px] md:h-[450px] lg:h-[400px] transition-all duration-1000 grayscale group-hover:grayscale-0 brightness-90 group-hover:brightness-100"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
-                    </div>
+                    ))}
+                  </Slider>
+                )}
+              </div>
+              
+              <div className="p-8 space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white border border-zinc-100 flex items-center justify-center text-[#A6823C] shadow-sm">
+                    <solution.icon className="w-6 h-6" />
                   </div>
-                  
-                  <div className={`p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
-                    <h3 className="text-3xl mb-2 text-gray-900">{solution.title}</h3>
-                    <h4 className="text-xl text-orange-600 mb-4">{solution.subtitle}</h4>
-                    <p className="text-gray-600 mb-6 text-lg leading-relaxed">{solution.description}</p>
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {solution.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-3">
-                          {feature.icon}
-                          <span className="text-gray-700">{feature.text}</span>
-                        </div>
-                      ))}
-                    </div>
+                  <div>
+                    <h4 className="text-2xl font-semibold text-zinc-900">{solution.title}</h4>
+                    <p className="text-[#A6823C] text-xs font-bold uppercase tracking-widest">{solution.subtitle}</p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
 
-        {/* White Label Section */}
-        <div className="mt-20">
-          <Card className="border-0 shadow-xl bg-gradient-to-r from-orange-500 to-red-500 text-white overflow-hidden">
-            <CardContent className="p-12 text-center">
-              <h3 className="text-3xl mb-4">White Label Solutions</h3>
-              <p className="text-xl mb-8 text-orange-100 max-w-2xl mx-auto">
-                Both products come with complete white-labeling capabilities, allowing you to deliver these solutions under your own brand to your clients.
-              </p>
-              
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                {whiteLabelFeatures.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3 justify-center">
-                    <CheckCircle size={20} className="text-orange-200 flex-shrink-0" />
-                    <span className="text-orange-100">{feature}</span>
-                  </div>
-                ))}
+                <p className="text-zinc-600 leading-relaxed">
+                  {solution.description}
+                </p>
+
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {solution.features.map(f => (
+                    <li key={f} className="flex items-center gap-2 text-sm text-zinc-500">
+                      <div className="w-1 h-1 bg-[#A6823C] rounded-full" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  type="button"
+                  onClick={scrollToContact}
+                  className="flex items-center gap-2 text-zinc-900 text-sm font-semibold uppercase tracking-widest hover:text-[#A6823C] transition-colors group/btn"
+                >
+                  Explore {solution.title} Solution
+                  <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                </button>
               </div>
-            </CardContent>
-          </Card>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

@@ -1,132 +1,111 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { Button } from "./ui/button";
 import { Menu, X } from 'lucide-react';
-import { scrollToSection } from '../utils/scrollUtils';
+import { motion, AnimatePresence } from 'framer-motion';
+import logo from "../assets/f5cb44d26c3dd245f0b3a59ffa05a4fffa42de64.png";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleScrollToSection = (sectionId: string) => {
-    // If we're not on the home page, navigate there first
-    if (location.pathname !== '/') {
-      window.location.href = `/#${sectionId}`;
-      return;
-    }
-    scrollToSection(sectionId);
-    setIsMenuOpen(false);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Solutions', href: '#solutions' },
+    { name: 'Features', href: '#features' },
+    { name: 'FLOW', href: '#flow' }
+  ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <Link 
-              to="/" 
-              className="flex items-center space-x-2 px-3 py-2 focus:outline-none" 
-              aria-label="PieQ Home"
-            >
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                className="h-8 w-8 text-orange-500" 
-                aria-hidden="true"
-              >
-                <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
-                <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
-              </svg>
-              <span className="text-2xl font-bold text-gray-900">PieQ</span>
-            </Link>
-          </div>
+    <header 
+      className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/90 backdrop-blur-md border-b border-zinc-100 py-2' 
+          : 'bg-white py-4'
+      }`}
+    >
+      <nav className="container mx-auto px-6 flex items-center justify-between">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex items-center gap-2"
+        >
+          <img src={logo} alt="PieQ Logo" className="h-16 md:h-20 w-auto object-contain scale-[2.04] origin-left" />
+        </motion.div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8" aria-label="Main navigation">
-            <button 
-              onClick={() => handleScrollToSection('features')} 
-              className="hover:text-orange-600 transition-colors focus:outline-none rounded px-2 py-1"
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-12">
+          {navLinks.map((link) => (
+            <a 
+              key={link.name} 
+              href={link.href}
+              className="text-[11px] font-black text-zinc-400 hover:text-[#A6823C] transition-colors uppercase tracking-[0.3em]"
             >
-              Platform
-            </button>
-            <button 
-              onClick={() => handleScrollToSection('solutions')} 
-              className="hover:text-orange-600 transition-colors focus:outline-none rounded px-2 py-1"
-            >
-              Solutions
-            </button>
-            <button 
-              onClick={() => handleScrollToSection('contact')} 
-              className="hover:text-orange-600 transition-colors focus:outline-none rounded px-2 py-1"
-            >
-              Contact
-            </button>
-          </nav>
-
-          <div className="hidden md:flex items-center space-x-4">
-            <Button 
-              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white" 
-              onClick={() => handleScrollToSection('contact')}
-              aria-label="Contact us to get started"
-            >
-              Talk to us
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden focus:outline-none rounded p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
-          </button>
+              {link.name}
+            </a>
+          ))}
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div id="mobile-menu" className="md:hidden mt-4 pt-4 border-t border-border">
-            <nav className="flex flex-col space-y-4" aria-label="Mobile navigation">
-              <button 
-                onClick={() => handleScrollToSection('features')} 
-                className="text-left hover:text-orange-600 transition-colors focus:outline-none rounded px-2 py-1"
-              >
-                Platform
-              </button>
-              <button 
-                onClick={() => handleScrollToSection('solutions')} 
-                className="text-left hover:text-orange-600 transition-colors focus:outline-none rounded px-2 py-1"
-              >
-                Solutions
-              </button>
-              <button 
-                onClick={() => handleScrollToSection('contact')} 
-                className="text-left hover:text-orange-600 transition-colors focus:outline-none rounded px-2 py-1"
-              >
-                Contact
-              </button>
-              <div className="pt-4 space-y-2">
+        <div className="hidden md:flex items-center gap-4">
+          <Button 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-[#A6823C] hover:bg-[#8C6C2D] text-black font-black rounded-none h-12 px-8 uppercase text-[10px] tracking-[0.3em] shadow-none border-none transition-all"
+          >
+            Talk to us
+          </Button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden text-zinc-900"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X /> : <Menu />}
+        </button>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-0 right-0 bg-white border-b border-zinc-100 p-6 md:hidden shadow-xl"
+          >
+            <div className="flex flex-col gap-6">
+              {navLinks.map((link) => (
+                <a 
+                  key={link.name} 
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-lg font-medium text-zinc-900"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <hr className="border-zinc-100" />
+              <div className="flex flex-col gap-4">
                 <Button 
-                  className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white" 
-                  onClick={() => handleScrollToSection('contact')}
-                  aria-label="Contact us to get started"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="bg-[#A6823C] text-black w-full rounded-none uppercase text-xs tracking-widest font-bold"
                 >
                   Talk to us
                 </Button>
               </div>
-            </nav>
-          </div>
+            </div>
+          </motion.div>
         )}
-      </div>
+      </AnimatePresence>
     </header>
   );
 }

@@ -1,173 +1,104 @@
-import {
-  Mail,
-  Headphones
-} from 'lucide-react';
-import { scrollToSection } from '../utils/scrollUtils';
+import { Linkedin } from 'lucide-react';
+import logo from "../assets/f5cb44d26c3dd245f0b3a59ffa05a4fffa42de64.png";
 
 export default function Footer() {
-
-  const footerLinks = {
-    Platform: [
-      { name: 'Core Features', action: () => scrollToSection('features') },
-      { name: 'AI Capabilities', action: () => scrollToSection('features') }
-    ],
-    Solutions: [
-      { name: 'Insurance Management', action: () => scrollToSection('insurance-management') },
-      { name: 'Hospitality Bookkeeping', action: () => scrollToSection('hospitality-bookkeeping') }
-    ],
-    Support: [
-      { name: 'Support', action: () => scrollToSection('contact') }
-    ]
-  };
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white">
-      {/* Main Footer Content */}
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid lg:grid-cols-6 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-2">
-            <div className="mb-6 flex items-center">
-              <a
-                href="#"
-                className="flex bg-white items-center space-x-2 px-3 py-2 focus:outline-none"
-                aria-label="PieQ Home"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-8 w-8 text-orange-500"
-                  aria-hidden="true"
-                >
-                  <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
-                  <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
-                </svg>
-                <span className="text-2xl font-bold text-gray-900">PieQ</span>
-              </a>
+    <footer className="bg-zinc-950 text-white pt-24 pb-12 border-t border-zinc-900">
+      <div className="container mx-auto px-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+          <div className="space-y-6 lg:col-span-1">
+            <div className="flex items-center gap-2">
+              <img src={logo} alt="PieQ Logo" className="h-16 md:h-20 w-auto object-contain brightness-0 invert" />
             </div>
-            <p className="text-gray-400 mb-6 max-w-sm">
-              Streamline every slice of your business with our AI-powered automation platform. Transform processes, boost productivity, and scale with confidence.
+            <p className="text-zinc-500 text-sm leading-relaxed max-w-xs">
+              Federated Logic for Optimised Workflow. The first agentic AI platform built for the complex demands of modern enterprise.
             </p>
-
-            <div className="space-y-3 mb-6">
-              <div className="flex items-center gap-3 text-sm">
-                <Mail size={16} className="text-orange-500" aria-hidden="true" />
-                <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=sales@pieq.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    // Track email link clicks
-                    if (typeof window !== 'undefined' && window.gtag) {
-                      window.gtag('event', 'click', {
-                        event_category: 'Footer',
-                        event_label: 'Email Click - sales@pieq.ai'
-                      });
-                    }
-                  }}
-                  className="hover:text-orange-400 transition-colors duration-200 focus:outline-none rounded px-1"
-                  aria-label="Send email to sales team"
-                >
-                  sales@pieq.ai
-                </a>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <Headphones size={16} className="text-orange-500" aria-hidden="true" />
-                <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=support@pieq.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    // Track email link clicks
-                    if (typeof window !== 'undefined' && window.gtag) {
-                      window.gtag('event', 'click', {
-                        event_category: 'Footer',
-                        event_label: 'Email Click - support@pieq.ai'
-                      });
-                    }
-                  }}
-                  className="hover:text-orange-400 transition-colors duration-200 focus:outline-none rounded px-1"
-                  aria-label="Send email to support team"
-                >
-                  support@pieq.ai
-                </a>
-              </div>
+            <div className="flex gap-4">
+              <a href="https://in.linkedin.com/company/pieq-ai" target="_blank" rel="noopener noreferrer" className="p-2 border border-zinc-800 hover:border-[#A6823C] hover:text-[#A6823C] transition-colors">
+                <Linkedin className="w-4 h-4" />
+              </a>
+              {/* <a href="#" className="p-2 border border-zinc-800 hover:border-[#A6823C] hover:text-[#A6823C] transition-colors">
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a href="#" className="p-2 border border-zinc-800 hover:border-[#A6823C] hover:text-[#A6823C] transition-colors">
+                <Github className="w-4 h-4" />
+              </a> */}
             </div>
-
           </div>
 
-          {/* Footer Links */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h4 className="mb-4 text-orange-400">{category}</h4>
-              <ul className="space-y-3">
-                {links.map((link, index) => (
-                  <li key={index}>
-                    <button
-                      onClick={link.action}
-                      className="text-gray-400 hover:text-white transition-colors text-left focus:outline-none"
-                    >
-                      {link.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-6">Product</h4>
+            <ul className="space-y-4">
+              <li><a href="#solutions" className="text-sm text-zinc-400 hover:text-[#A6823C] transition-colors">Hospitality Bookkeeper</a></li>
+              <li><a href="#solutions" className="text-sm text-zinc-400 hover:text-[#A6823C] transition-colors">Insurance Architect</a></li>
+              {/* <li><a href="#" className="text-sm text-zinc-400 hover:text-[#A6823C] transition-colors">Integrations</a></li>
+              <li><a href="#" className="text-sm text-zinc-400 hover:text-[#A6823C] transition-colors">Security & Trust</a></li> */}
+            </ul>
+          </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm">
-              © 2025 PieQ. All rights reserved.
-            </p>
-            <div className="flex items-center gap-2 text-gray-400 text-sm flex-shrink-0 sm:mr-32 md:mr-36 rounded-full px-4 py-2">
-              <a
-                href="/privacy-policy"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => {
-                  if (typeof window !== 'undefined' && window.gtag) {
-                    window.gtag('event', 'click', {
-                      event_category: 'Footer',
-                      event_label: 'Privacy Policy'
-                    });
-                  }
-                }}
-                className="hover:text-orange-400 transition-colors duration-200 focus:outline-none whitespace-nowrap flex-shrink-0"
-                aria-label="View Privacy Policy"
-              >
-                Privacy Policy
-              </a>
-              <span className="text-gray-600 flex-shrink-0">|</span>
-              <a
-                href="/terms-of-service"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => {
-                  if (typeof window !== 'undefined' && window.gtag) {
-                    window.gtag('event', 'click', {
-                      event_category: 'Footer',
-                      event_label: 'Terms of Service'
-                    });
-                  }
-                }}
-                className="hover:text-orange-400 transition-colors duration-200 focus:outline-none  whitespace-nowrap flex-shrink-0"
-                aria-label="View Terms of Service"
-              >
-                Terms of Service
-              </a>
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-6">Industries</h4>
+            <ul className="space-y-4">
+              <li><a href="#" className="text-sm text-zinc-400 hover:text-[#A6823C] transition-colors">Insurance</a></li>
+              <li><a href="#" className="text-sm text-zinc-400 hover:text-[#A6823C] transition-colors">Hospitality</a></li>
+              <li><a href="#" className="text-sm text-zinc-400 hover:text-[#A6823C] transition-colors">Bio Surveilance</a></li>
+            </ul>
+          </div>
+
+          {/* <div className="space-y-6">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-6">Stay Updated</h4>
+            <p className="text-sm text-zinc-400">Join our newsletter for the latest in agentic AI orchestration.</p>
+            <div className="flex">
+              <input 
+                type="email" 
+                placeholder="Work email" 
+                className="bg-zinc-900 border border-zinc-800 px-4 py-2 text-sm w-full focus:outline-none focus:border-[#A6823C]"
+              />
+              <button className="bg-[#A6823C] text-black px-4 py-2 hover:bg-[#8C6C2D] transition-colors">
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
+          </div> */}
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-zinc-900 text-zinc-600 text-[10px] uppercase tracking-widest font-bold">
+          <p>© {currentYear} PieQ AI Technologies. All Rights Reserved.</p>
+          <div className="flex gap-8">
+            <a 
+              href="/privacy-policy" 
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                if (typeof window !== 'undefined' && window.gtag) {
+                  window.gtag('event', 'click', {
+                    event_category: 'Footer',
+                    event_label: 'Privacy Policy'
+                  });
+                }
+              }}
+              className="hover:text-white transition-colors"
+            >
+              Privacy Policy
+            </a>
+            <a 
+              href="/terms-of-service" 
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                if (typeof window !== 'undefined' && window.gtag) {
+                  window.gtag('event', 'click', {
+                    event_category: 'Footer',
+                    event_label: 'Terms of Service'
+                  });
+                }
+              }}
+              className="hover:text-white transition-colors"
+            >
+              Terms of Service
+            </a>
+            {/* <a href="#" className="hover:text-white transition-colors">Cookies</a> */}
           </div>
         </div>
       </div>
