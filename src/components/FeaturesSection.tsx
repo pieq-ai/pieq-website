@@ -45,10 +45,10 @@ export default function FeaturesSection() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-16 items-start mb-24">
           <div className="lg:w-1/2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black text-white text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+            {/* <div className="inline-flex items-center gap-2 px-3 py-1 bg-black text-white text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
               <div className="w-1.5 h-1.5 rounded-full bg-[#A6823C]" />
               Proprietary AI Product
-            </div>
+            </div> */}
             <h2 className="text-5xl md:text-7xl font-light text-zinc-950 mb-8 leading-[1.1]">
               <span className="font-bold">FLOW</span>.
               <div className="text-zinc-600 text-lg leading-relaxed max-w-xl"/>
@@ -70,7 +70,7 @@ export default function FeaturesSection() {
               </div>
             </div>
             <div className="p-8 border border-zinc-100">
-              <p className="text-sm italic text-zinc-400 text-[16px]">"FLOW doesn't automate; it orchestrates decision."</p>
+              <p className="text-sm italic text-zinc-400 text-[16px]">"FLOW doesn't automate tasks - it orchestrates decisions."</p>
             </div>
           </div>
         </div>

@@ -27,7 +27,7 @@ const solutions = [
     ],
     features: [
       'Automated Reconciliation',
-      'Financial Reporting',
+      'Financial Reporting & Close',
       'Tax Preparation Support',
       'Hospitality Context',
       'POS & Vendor Integrations',
@@ -36,7 +36,7 @@ const solutions = [
   },
   {
     id: 'insurance',
-    title: 'Insurance Architect',
+    title: 'Insurance Agency Management',
     subtitle: 'AI-ORCHESTRATED INSURANCE OPERATIONS',
     description: 'AI workflow orchestration platform for insurance agencies and MGAs, powered by FLOW, it coordinates commission reconciliation, payouts, policy workflows, and agent experiences-executing insurance operations with speed and precision.',
     icon: Shield,
@@ -53,7 +53,6 @@ const solutions = [
       'Agent experience',
       'Agent self service portal',
       'Agentic AI dashboard',
-      '',
     ]
   }
 ];
@@ -184,7 +183,7 @@ export default function SolutionsSection() {
 
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {solution.features.map(f => (
-                    <li key={f} className="flex items-center gap-2 text-sm text-zinc-500">
+                    <li key={f} className={`flex items-center gap-2 text-sm ${f === 'Hospitality Context' || f === 'Agent experience' ? 'text-[#A6823C]' : 'text-zinc-500'}`}>
                       <div className="w-1 h-1 bg-[#A6823C] rounded-full" />
                       {f}
                     </li>
@@ -196,7 +195,7 @@ export default function SolutionsSection() {
                   onClick={scrollToContact}
                   className="flex items-center gap-2 text-zinc-900 text-sm font-semibold uppercase tracking-widest hover:text-[#A6823C] transition-colors group/btn"
                 >
-                  Explore {solution.title} Solution
+                  {solution.id === 'hospitality' ? 'EXPLORE HOSPITALITY SOLUTION' : 'EXPLORE INSURANCE SOLUTIONS'}
                   <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </button>
               </div>

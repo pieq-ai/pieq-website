@@ -277,7 +277,7 @@ describe('Complete Application Test Suite', () => {
     expect(screen.getByText('Policy workflow management')).toBeInTheDocument()
     
     expect(screen.getByText('Automated Reconciliation')).toBeInTheDocument()
-    expect(screen.getByText('Financial Reporting')).toBeInTheDocument()
+    expect(screen.getByText('Financial Reporting & Close')).toBeInTheDocument()
     expect(screen.getByText('Tax Preparation Support')).toBeInTheDocument()
     expect(screen.getByText('Multi-Location/Multi Client Management')).toBeInTheDocument()
   })
