@@ -1,4 +1,4 @@
-import { ArrowRight, Linkedin } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import logo from "../assets/f5cb44d26c3dd245f0b3a59ffa05a4fffa42de64.png";
 
 export default function Footer() {
@@ -47,7 +47,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="space-y-6">
+          {/* <div className="space-y-6">
             <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-6">Stay Updated</h4>
             <p className="text-sm text-zinc-400">Join our newsletter for the latest in agentic AI orchestration.</p>
             <div className="flex">
@@ -60,7 +60,7 @@ export default function Footer() {
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-zinc-900 text-zinc-600 text-[10px] uppercase tracking-widest font-bold">
