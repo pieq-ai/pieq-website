@@ -7,6 +7,19 @@ export default {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      // Match the "wider gutters" look by preventing the container from
+      // expanding to 1536px at 2xl+.
+      screens: {
+        // Preserve normal responsive container widths...
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        // Match Tailwind defaults / reference CSS (2xl = 1536px / 96rem)
+        "2xl": "1536px",
+      },
+    },
     extend: {
       colors: {
         border: "var(--border)",
