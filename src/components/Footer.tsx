@@ -31,8 +31,8 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-6">Product</h4>
             <ul className="space-y-4">
-              <li><a href="#" className="text-sm text-zinc-400 hover:text-[#A6823C] transition-colors">Hospitality Bookkeeper</a></li>
-              <li><a href="#" className="text-sm text-zinc-400 hover:text-[#A6823C] transition-colors">Insurance Architect</a></li>
+              <li><a href="#solutions" className="text-sm text-zinc-400 hover:text-[#A6823C] transition-colors">Hospitality Bookkeeper</a></li>
+              <li><a href="#solutions" className="text-sm text-zinc-400 hover:text-[#A6823C] transition-colors">Insurance Architect</a></li>
               {/* <li><a href="#" className="text-sm text-zinc-400 hover:text-[#A6823C] transition-colors">Integrations</a></li>
               <li><a href="#" className="text-sm text-zinc-400 hover:text-[#A6823C] transition-colors">Security & Trust</a></li> */}
             </ul>

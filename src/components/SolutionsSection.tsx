@@ -72,6 +72,10 @@ export default function SolutionsSection() {
     fade: true,
   };
 
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section id="solutions" className="py-32 bg-white relative z-10">
       <style>{`
@@ -187,7 +191,11 @@ export default function SolutionsSection() {
                   ))}
                 </ul>
 
-                <button className="flex items-center gap-2 text-zinc-900 text-sm font-semibold uppercase tracking-widest hover:text-[#A6823C] transition-colors group/btn">
+                <button
+                  type="button"
+                  onClick={scrollToContact}
+                  className="flex items-center gap-2 text-zinc-900 text-sm font-semibold uppercase tracking-widest hover:text-[#A6823C] transition-colors group/btn"
+                >
                   Explore {solution.title} Solution
                   <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </button>
