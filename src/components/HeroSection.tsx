@@ -12,7 +12,10 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative flex items-center bg-white overflow-hidden py-20 lg:py-32">
+    <section
+      id="home"
+      className="relative flex items-center bg-white overflow-hidden py-20 lg:py-32 min-h-screen"
+    >
       {/* Background visual elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#A6823C]/10 rounded-full blur-[140px]" />
