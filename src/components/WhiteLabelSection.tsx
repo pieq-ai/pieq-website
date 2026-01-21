@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { Palette, Share2, FileText, TrendingUp, CheckCircle2 } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { Palette, Share2, FileText, TrendingUp } from 'lucide-react';
 
 export const WhiteLabelSection = () => {
   return (
@@ -78,17 +77,17 @@ export const WhiteLabelSection = () => {
           >
             <div className="relative">
               {/* Main Image with Glassmorphism Overlay */}
-              <div className="rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl relative aspect-[4/5] lg:aspect-square">
+              {/* <div className="rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl relative aspect-[4/5] lg:aspect-square">
                 <ImageWithFallback 
                   src="https://images.unsplash.com/photo-1696087225391-eb97abf5ba20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwYnJhbmQlMjBpZGVudGl0eSUyMG1vY2t1cCUyMHByZW1pdW0lMjBvZmZpY2V8ZW58MXx8fHwxNzY4NTU2NDI3fDA&ixlib=rb-4.1.0&q=80&w=1080"
                   alt="White Label Brand Identity Mockup"
                   className="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-1000"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent opacity-60" />
-              </div>
+              </div> */}
 
               {/* Floating UI Element */}
-              <motion.div 
+              {/* <motion.div 
                 animate={{ y: [0, -15, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute -bottom-8 -left-8 md:-left-12 p-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-2xl max-w-[280px]"
@@ -105,7 +104,7 @@ export const WhiteLabelSection = () => {
                 <p className="text-zinc-400 text-xs leading-relaxed">
                   Deliver high-performance agentic AI solutions under your own ecosystem.
                 </p>
-              </motion.div>
+              </motion.div> */}
 
               {/* Decorative Glow */}
               <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#A6823C]/20 blur-[120px] rounded-full -z-10" />
