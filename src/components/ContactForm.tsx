@@ -95,17 +95,23 @@ export default function ContactForm() {
                 <div className="absolute -inset-4 bg-white/40 backdrop-blur-3xl rounded-[2rem] -z-10 border border-white/20 hidden md:block" />
                 
                 {isSubmitted ? (
-                  <div className="bg-white p-8 md:p-14 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] border border-zinc-100 flex flex-col items-center justify-center text-center min-h-[400px]">
-                    <CheckCircle className="text-[#A6823C] w-16 h-16 mb-6" />
+                  <div 
+                    className="bg-white p-8 md:p-14 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] border border-zinc-100 flex flex-col items-center justify-center text-center min-h-[400px]"
+                    role="status"
+                    aria-live="polite"
+                    aria-atomic="true"
+                  >
+                    <CheckCircle className="text-[#A6823C] w-16 h-16 mb-6" aria-hidden="true" />
                     <h3 className="text-2xl font-bold mb-2">Request Received</h3>
                     <p className="text-zinc-500">We'll be in touch shortly to discuss your automation needs.</p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="bg-white p-8 md:p-14 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] border border-zinc-100">
+                  <form onSubmit={handleSubmit} className="bg-white p-8 md:p-14 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] border border-zinc-100" aria-label="Contact form">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
                       <div className="space-y-3">
-                        <label className="text-[10px] font-black uppercase tracking-[0.4em] block text-zinc-400">Full Name *</label>
+                        <label htmlFor="contact-name" className="text-[10px] font-black uppercase tracking-[0.4em] block text-zinc-400">Full Name *</label>
                         <input 
+                          id="contact-name"
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
@@ -116,8 +122,9 @@ export default function ContactForm() {
                         />
                       </div>
                       <div className="space-y-3">
-                        <label className="text-[10px] font-black uppercase tracking-[0.4em] block text-zinc-400">Work Email *</label>
+                        <label htmlFor="contact-email" className="text-[10px] font-black uppercase tracking-[0.4em] block text-zinc-400">Work Email *</label>
                         <input 
+                          id="contact-email"
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
@@ -130,8 +137,9 @@ export default function ContactForm() {
                     </div>
 
                     <div className="space-y-3 mb-10">
-                      <label className="text-[10px] font-black uppercase tracking-[0.4em] block text-zinc-400">Company Name *</label>
+                      <label htmlFor="contact-company" className="text-[10px] font-black uppercase tracking-[0.4em] block text-zinc-400">Company Name *</label>
                       <input 
+                        id="contact-company"
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
@@ -143,8 +151,9 @@ export default function ContactForm() {
                     </div>
 
                     <div className="space-y-3 mb-12">
-                      <label className="text-[10px] font-black uppercase tracking-[0.4em] block text-zinc-400">Tell us about your automation needs</label>
+                      <label htmlFor="contact-message" className="text-[10px] font-black uppercase tracking-[0.4em] block text-zinc-400">Tell us about your automation needs</label>
                       <textarea 
+                        id="contact-message"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
@@ -155,8 +164,13 @@ export default function ContactForm() {
                     </div>
 
                     {error && (
-                      <div className="flex items-center gap-2 p-4 mb-6 bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest rounded-sm border border-red-100">
-                        <AlertCircle size={16} />
+                      <div 
+                        className="flex items-center gap-2 p-4 mb-6 bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest rounded-sm border border-red-100"
+                        role="alert"
+                        aria-live="assertive"
+                        aria-atomic="true"
+                      >
+                        <AlertCircle size={16} aria-hidden="true" />
                         {error}
                       </div>
                     )}

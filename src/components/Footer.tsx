@@ -20,10 +20,10 @@ export default function Footer() {
                 href="https://in.linkedin.com/company/pieq-ai" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="p-2 border border-zinc-800 hover:border-[#A6823C] hover:text-[#A6823C] transition-colors"
-                aria-label="Visit PieQ on LinkedIn"
+                aria-label="Visit PieQ on LinkedIn (opens in new tab)"
+                className="p-2 border border-zinc-800 hover:border-[#A6823C] hover:text-[#A6823C] transition-colors focus:outline-none focus:ring-2 focus:ring-[#A6823C] focus:ring-offset-2"
               >
-                <Linkedin className="w-4 h-4" />
+                <Linkedin className="w-4 h-4" aria-hidden="true" />
               </a>
               {/* <a href="#" className="p-2 border border-zinc-800 hover:border-[#A6823C] hover:text-[#A6823C] transition-colors">
                 <Twitter className="w-4 h-4" />
@@ -76,6 +76,7 @@ export default function Footer() {
               href="/privacy-policy" 
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Privacy Policy (opens in new tab)"
               onClick={() => {
                 if (typeof window !== 'undefined' && window.gtag) {
                   window.gtag('event', 'click', {
@@ -84,7 +85,7 @@ export default function Footer() {
                   });
                 }
               }}
-              className="hover:text-white transition-colors"
+              className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#A6823C] focus:ring-offset-2 focus:ring-offset-zinc-950 rounded"
             >
               Privacy Policy
             </a>
@@ -92,6 +93,7 @@ export default function Footer() {
               href="/terms-of-service" 
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Terms of Service (opens in new tab)"
               onClick={() => {
                 if (typeof window !== 'undefined' && window.gtag) {
                   window.gtag('event', 'click', {
@@ -100,7 +102,7 @@ export default function Footer() {
                   });
                 }
               }}
-              className="hover:text-white transition-colors"
+              className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#A6823C] focus:ring-offset-2 focus:ring-offset-zinc-950 rounded"
             >
               Terms of Service
             </a>

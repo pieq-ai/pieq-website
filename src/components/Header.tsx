@@ -40,17 +40,17 @@ export default function Header() {
         </motion.div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-12">
+        <nav className="hidden md:flex items-center gap-12" aria-label="Main navigation">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href}
-              className="text-[11px] font-black text-zinc-400 hover:text-[#A6823C] transition-colors uppercase tracking-[0.3em]"
+              className="text-[11px] font-black text-zinc-400 hover:text-[#A6823C] transition-colors uppercase tracking-[0.3em] focus:outline-none focus:ring-2 focus:ring-[#A6823C] focus:ring-offset-2 rounded"
             >
               {link.name}
             </a>
           ))}
-        </div>
+        </nav>
 
         <div className="hidden md:flex items-center gap-4">
           <Button 
@@ -65,8 +65,11 @@ export default function Header() {
         <button 
           className="md:hidden text-zinc-900"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
+          {isMobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
       </nav>
 
@@ -74,10 +77,12 @@ export default function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-full left-0 right-0 bg-white border-b border-zinc-100 p-6 md:hidden shadow-xl"
+            role="menu"
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
@@ -85,7 +90,8 @@ export default function Header() {
                   key={link.name} 
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-[11px] font-black text-zinc-400 hover:text-[#A6823C] transition-colors uppercase tracking-[0.3em]"
+                  className="text-[11px] font-black text-zinc-400 hover:text-[#A6823C] transition-colors uppercase tracking-[0.3em] focus:outline-none focus:ring-2 focus:ring-[#A6823C] focus:ring-offset-2 rounded"
+                  role="menuitem"
                 >
                   {link.name}
                 </a>

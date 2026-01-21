@@ -153,18 +153,30 @@ export default function SolutionsSection() {
             >
               <div className="aspect-[16/10] overflow-hidden relative bg-black">
                 {solution.images && (
-                  <Slider {...settings} className="h-full">
-                    {solution.images.map((img, i) => (
-                      <div key={i} className="h-full relative outline-none overflow-hidden">
-                        <ImageWithFallback 
-                          src={img} 
-                          alt={`${solution.title} - view ${i + 1}`}
-                          className="object-cover w-full h-[350px] md:h-[450px] lg:h-[400px] transition-all duration-1000 grayscale group-hover:grayscale-0 brightness-90 group-hover:brightness-100"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      </div>
-                    ))}
-                  </Slider>
+                  <div 
+                    role="region" 
+                    aria-label={`${solution.title} image carousel`}
+                    aria-roledescription="carousel"
+                  >
+                    <Slider {...settings} className="h-full">
+                      {solution.images.map((img, i) => (
+                        <div 
+                          key={i} 
+                          className="h-full relative outline-none overflow-hidden"
+                          role="group"
+                          aria-roledescription="slide"
+                          aria-label={`${solution.title} - view ${i + 1} of ${solution.images.length}`}
+                        >
+                          <ImageWithFallback 
+                            src={img} 
+                            alt={`${solution.title} - view ${i + 1}`}
+                            className="object-cover object-top w-full h-[350px] md:h-[450px] lg:h-[400px] transition-all duration-1000 grayscale group-hover:grayscale-0 brightness-90 group-hover:brightness-100 scale-[1.08] origin-top"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        </div>
+                      ))}
+                    </Slider>
+                  </div>
                 )}
               </div>
               
@@ -203,10 +215,10 @@ export default function SolutionsSection() {
                 <button
                   type="button"
                   onClick={scrollToContact}
-                  className="flex items-center gap-2 text-zinc-900 text-sm font-semibold uppercase tracking-widest hover:text-[#A6823C] transition-colors group/btn"
+                  className="flex items-center gap-2 text-zinc-900 text-sm font-semibold uppercase tracking-widest hover:text-[#A6823C] transition-colors group/btn focus:outline-none focus:ring-2 focus:ring-[#A6823C] focus:ring-offset-2 rounded"
                 >
                   {solution.id === 'hospitality' ? 'EXPLORE HOSPITALITY SOLUTIONS' : 'EXPLORE INSURANCE SOLUTIONS'}
-                  <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                  <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" aria-hidden="true" />
                 </button>
               </div>
             </motion.div>
