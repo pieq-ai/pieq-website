@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Zap, Share2, Layers, BellRing, Target, Activity, MessageSquare } from 'lucide-react';
+import { Zap, Share2, Layers, BellRing, Target, MessageSquare } from 'lucide-react';
 
 const features = [
   {
@@ -27,11 +27,11 @@ const features = [
     title: 'COMPOSABILITY ARCHITECTURE',
     description: 'Build complex logic chains using FLOW’s modular, agent-first approach designed for enterprise agility.',
   },
-  {
-    icon: Activity,
-    title: 'PROPRIETARY OBSERVABILITY',
-    description: 'Deep visibility into every decision path taken by the FLOW AI, ensuring full auditability and trust.',
-  },
+  // {
+  //   icon: Activity,
+  //   title: 'PROPRIETARY OBSERVABILITY',
+  //   description: 'Deep visibility into every decision path taken by the FLOW AI, ensuring full auditability and trust.',
+  // },
   {
     icon: Zap,
     title: 'FLOW INTEGRATED BRIDGE',
