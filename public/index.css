@@ -2254,6 +2254,7 @@
   @media (hover: hover) {
     .hover\:bg-\[\#8C6C2D\]:hover {
       background-color: #8c6c2d;
+      cursor: pointer;
     }
   }
 
@@ -2302,18 +2303,21 @@
   @media (hover: hover) {
     .hover\:bg-zinc-800:hover {
       background-color: var(--color-zinc-800);
+      cursor: pointer;
     }
   }
 
   @media (hover: hover) {
     .hover\:bg-zinc-900:hover {
       background-color: var(--color-zinc-900);
+      cursor: pointer;
     }
   }
 
   @media (hover: hover) {
     .hover\:text-\[\#A6823C\]:hover {
       color: #a6823c;
+      cursor: pointer;
     }
   }
 

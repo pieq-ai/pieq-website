@@ -80,7 +80,7 @@ export const WhiteLabelSection = () => {
               {/* Main Image with Glassmorphism Overlay */}
               <div className="rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl relative aspect-[4/5] lg:aspect-square">
                 <ImageWithFallback 
-                  src="https://images.unsplash.com/photo-1696087225391-eb97abf5ba20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwYnJhbmQlMjBpZGVudGl0eSUyMG1vY2t1cCUyMHByZW1pdW0lMjBvZmZpY2V8ZW58MXx8fHwxNzY4NTU2NDI3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                  src="https://images.unsplash.com/photo-1695048168808-4bbfa1efdfa7?auto=format&fit=crop&q=80&w=1080"
                   alt="White Label Brand Identity Mockup"
                   className="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-1000"
                 />

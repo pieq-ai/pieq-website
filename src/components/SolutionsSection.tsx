@@ -19,6 +19,7 @@ const solutions = [
     title: 'Hospitality Bookkeeper',
     subtitle: 'AI-ORCHESTRATED FINANCIAL OPERATIONS FOR HOSPITALITY',
     description: 'An AI-powered financial operations solution purpose-built for restaurants and hospitality groups. Powered by FLOW, it orchesrates bookkeeping, reconciliation, and reporting across locations-turning daily financial activity into real-time operational insight',
+    featureHeading: 'Financial Operations',
     icon: Hotel,
     images: [
       ratioAnalysisImg,
@@ -39,6 +40,7 @@ const solutions = [
     title: 'Insurance Agency Management',
     subtitle: 'AI-ORCHESTRATED INSURANCE OPERATIONS',
     description: 'AI workflow orchestration platform for insurance agencies and MGAs, powered by FLOW, it coordinates commission reconciliation, payouts, policy workflows, and agent experiences-executing insurance operations with speed and precision.',
+    featureHeading: 'Core Insurance Operations',
     icon: Shield,
     images: [
       agentChatImg,
@@ -181,6 +183,14 @@ export default function SolutionsSection() {
                   {solution.description}
                 </p>
 
+                <div className="flex items-center gap-4 pt-2">
+                  <div className="h-px w-10 bg-[#A6823C]" />
+                  <h5 className="text-lg font-semibold text-zinc-900 tracking-tight">
+                    {solution.featureHeading}
+                  </h5>
+                  <div className="h-px flex-1 bg-zinc-200" />
+                </div>
+
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {solution.features.map(f => (
                     <li key={f} className={`flex items-center gap-2 text-sm ${f === 'Hospitality Context' || f === 'Agent experience' ? 'text-[#A6823C]' : 'text-zinc-500'}`}>
@@ -195,7 +205,7 @@ export default function SolutionsSection() {
                   onClick={scrollToContact}
                   className="flex items-center gap-2 text-zinc-900 text-sm font-semibold uppercase tracking-widest hover:text-[#A6823C] transition-colors group/btn"
                 >
-                  {solution.id === 'hospitality' ? 'EXPLORE HOSPITALITY SOLUTION' : 'EXPLORE INSURANCE SOLUTIONS'}
+                  {solution.id === 'hospitality' ? 'EXPLORE HOSPITALITY SOLUTIONS' : 'EXPLORE INSURANCE SOLUTIONS'}
                   <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </button>
               </div>

@@ -16,7 +16,13 @@ export default function Footer() {
               Federated Logic for Optimised Workflow. The first agentic AI platform built for the complex demands of modern enterprise.
             </p>
             <div className="flex gap-4">
-              <a href="https://in.linkedin.com/company/pieq-ai" target="_blank" rel="noopener noreferrer" className="p-2 border border-zinc-800 hover:border-[#A6823C] hover:text-[#A6823C] transition-colors">
+              <a 
+                href="https://in.linkedin.com/company/pieq-ai" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="p-2 border border-zinc-800 hover:border-[#A6823C] hover:text-[#A6823C] transition-colors"
+                aria-label="Visit PieQ on LinkedIn"
+              >
                 <Linkedin className="w-4 h-4" />
               </a>
               {/* <a href="#" className="p-2 border border-zinc-800 hover:border-[#A6823C] hover:text-[#A6823C] transition-colors">
