@@ -15,7 +15,7 @@ function HomePage() {
     <div className="min-h-screen bg-white font-sans selection:bg-[#A6823C] selection:text-black overflow-x-hidden">
       <Header />
       
-      <main className="relative">
+      <main id="main-content" className="relative">
         <HeroSection />
 
         <ActionableIntelligence />
@@ -46,6 +46,7 @@ function HomePage() {
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=sales@pieq.ai" 
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Email sales at pieq.ai (opens in new tab)"
                   onClick={() => {
                     if (typeof window !== 'undefined' && window.gtag) {
                       window.gtag('event', 'click', {
@@ -54,7 +55,7 @@ function HomePage() {
                       });
                     }
                   }}
-                  className="text-xl font-bold text-black hover:opacity-70 transition-opacity block"
+                  className="text-xl font-bold text-black hover:opacity-70 transition-opacity block focus:outline-none focus:ring-2 focus:ring-[#A6823C] focus:ring-offset-2 rounded"
                 >
                   sales@pieq.ai
                 </a>
@@ -66,6 +67,7 @@ function HomePage() {
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=support@pieq.ai"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Email support at pieq.ai (opens in new tab)"
                   onClick={() => {
                     if (typeof window !== 'undefined' && window.gtag) {
                       window.gtag('event', 'click', {
@@ -74,7 +76,7 @@ function HomePage() {
                       });
                     }
                   }}
-                  className="text-xl font-bold text-black hover:opacity-70 transition-opacity block"
+                  className="text-xl font-bold text-black hover:opacity-70 transition-opacity block focus:outline-none focus:ring-2 focus:ring-[#A6823C] focus:ring-offset-2 rounded"
                 >
                   support@pieq.ai
                 </a>

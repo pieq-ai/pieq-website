@@ -19,6 +19,7 @@ const solutions = [
     title: 'Hospitality Bookkeeper',
     subtitle: 'AI-ORCHESTRATED FINANCIAL OPERATIONS FOR HOSPITALITY',
     description: 'An AI-powered financial operations solution purpose-built for restaurants and hospitality groups. Powered by FLOW, it orchesrates bookkeeping, reconciliation, and reporting across locations-turning daily financial activity into real-time operational insight',
+    featureHeading: 'Financial Operations',
     icon: Hotel,
     images: [
       ratioAnalysisImg,
@@ -39,6 +40,7 @@ const solutions = [
     title: 'Insurance Agency Management',
     subtitle: 'AI-ORCHESTRATED INSURANCE OPERATIONS',
     description: 'AI workflow orchestration platform for insurance agencies and MGAs, powered by FLOW, it coordinates commission reconciliation, payouts, policy workflows, and agent experiences-executing insurance operations with speed and precision.',
+    featureHeading: 'Core Insurance Operations',
     icon: Shield,
     images: [
       agentChatImg,
@@ -151,18 +153,30 @@ export default function SolutionsSection() {
             >
               <div className="aspect-[16/10] overflow-hidden relative bg-black">
                 {solution.images && (
-                  <Slider {...settings} className="h-full">
-                    {solution.images.map((img, i) => (
-                      <div key={i} className="h-full relative outline-none overflow-hidden">
-                        <ImageWithFallback 
-                          src={img} 
-                          alt={`${solution.title} - view ${i + 1}`}
-                          className="object-cover w-full h-[350px] md:h-[450px] lg:h-[400px] transition-all duration-1000 grayscale group-hover:grayscale-0 brightness-90 group-hover:brightness-100"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      </div>
-                    ))}
-                  </Slider>
+                  <div 
+                    role="region" 
+                    aria-label={`${solution.title} image carousel`}
+                    aria-roledescription="carousel"
+                  >
+                    <Slider {...settings} className="h-full">
+                      {solution.images.map((img, i) => (
+                        <div 
+                          key={i} 
+                          className="h-full relative outline-none overflow-hidden"
+                          role="group"
+                          aria-roledescription="slide"
+                          aria-label={`${solution.title} - view ${i + 1} of ${solution.images.length}`}
+                        >
+                          <ImageWithFallback 
+                            src={img} 
+                            alt={`${solution.title} - view ${i + 1}`}
+                            className="object-cover object-top w-full h-[350px] md:h-[450px] lg:h-[400px] transition-all duration-1000 grayscale group-hover:grayscale-0 brightness-90 group-hover:brightness-100 scale-[1.08] origin-top"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        </div>
+                      ))}
+                    </Slider>
+                  </div>
                 )}
               </div>
               
@@ -181,6 +195,14 @@ export default function SolutionsSection() {
                   {solution.description}
                 </p>
 
+                <div className="flex items-center gap-4 pt-2">
+                  <div className="h-px w-10 bg-[#A6823C]" />
+                  <h5 className="text-lg font-semibold text-zinc-900 tracking-tight">
+                    {solution.featureHeading}
+                  </h5>
+                  <div className="h-px flex-1 bg-zinc-200" />
+                </div>
+
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {solution.features.map(f => (
                     <li key={f} className={`flex items-center gap-2 text-sm ${f === 'Hospitality Context' || f === 'Agent experience' ? 'text-[#A6823C]' : 'text-zinc-500'}`}>
@@ -193,10 +215,10 @@ export default function SolutionsSection() {
                 <button
                   type="button"
                   onClick={scrollToContact}
-                  className="flex items-center gap-2 text-zinc-900 text-sm font-semibold uppercase tracking-widest hover:text-[#A6823C] transition-colors group/btn"
+                  className="flex items-center gap-2 text-zinc-900 text-sm font-semibold uppercase tracking-widest hover:text-[#A6823C] transition-colors group/btn focus:outline-none focus:ring-2 focus:ring-[#A6823C] focus:ring-offset-2 rounded"
                 >
-                  {solution.id === 'hospitality' ? 'EXPLORE HOSPITALITY SOLUTION' : 'EXPLORE INSURANCE SOLUTIONS'}
-                  <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                  {solution.id === 'hospitality' ? 'EXPLORE HOSPITALITY SOLUTIONS' : 'EXPLORE INSURANCE SOLUTIONS'}
+                  <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" aria-hidden="true" />
                 </button>
               </div>
             </motion.div>

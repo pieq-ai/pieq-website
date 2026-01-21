@@ -74,9 +74,10 @@ export default function HeroSection() {
                 size="lg" 
                 className="bg-black hover:bg-zinc-900 text-white font-bold h-14 px-8 rounded-none transition-all uppercase tracking-widest text-xs shadow-lg shadow-black/10"
                 onClick={() => scrollToSection('features')}
+                aria-label="Explore FLOW capabilities"
               >
                 Explore Capability
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
               </Button>
             </div>
 
