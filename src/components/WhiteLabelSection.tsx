@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Palette, Share2, FileText, TrendingUp, CheckCircle2 } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import whitelabelMockup from '../assets/whitelabel-mockup.png';
 
 export const WhiteLabelSection = () => {
   return (
@@ -80,7 +81,7 @@ export const WhiteLabelSection = () => {
               {/* Main Image with Glassmorphism Overlay */}
               <div className="rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl relative aspect-[4/5] lg:aspect-square">
                 <ImageWithFallback 
-                  src="https://images.unsplash.com/photo-1695048168808-4bbfa1efdfa7?auto=format&fit=crop&q=80&w=1080"
+                  src={whitelabelMockup}
                   alt="White Label Brand Identity Mockup"
                   className="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-1000"
                 />
