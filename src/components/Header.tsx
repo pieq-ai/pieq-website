@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from "../assets/f5cb44d26c3dd245f0b3a59ffa05a4fffa42de64.png";
+import AnnouncementBanner from "./AnnouncementBanner";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,13 +24,15 @@ export default function Header() {
   ];
 
   return (
-    <header 
-      className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/90 backdrop-blur-md border-b border-zinc-100 py-2' 
-          : 'bg-white py-4'
-      }`}
-    >
+    <header className="sticky top-0 left-0 right-0 z-50">
+      <AnnouncementBanner />
+      <div
+        className={`transition-all duration-300 ${
+          isScrolled
+            ? 'bg-white/90 backdrop-blur-md border-b border-zinc-100 py-2'
+            : 'bg-white py-4'
+        }`}
+      >
       <nav className="container mx-auto px-6 flex items-center justify-between">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
@@ -72,6 +75,7 @@ export default function Header() {
           {isMobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
       </nav>
+      </div>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>

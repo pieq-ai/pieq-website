@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { termsOfServiceHTML } from '../data/legalDocuments';
+import AnnouncementBanner from '../components/AnnouncementBanner';
 
 export default function TermsOfService() {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -77,6 +78,7 @@ export default function TermsOfService() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <AnnouncementBanner />
       <main className="flex-1">
         <div className="container mx-auto px-6 py-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-8">Terms of Service</h1>
